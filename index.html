@@ -66,12 +66,12 @@
     .paper-tab a {
       color: #4a148c;
       text-decoration: none;
-      display: inline-block; /* Allowing the animation to work */
+      display: inline-block;
       width: 100%;
       height: 100%;
     }
 
-    /* Bouncing effect */
+    /* Bounce animation */
     @keyframes bounce {
       0%, 100% {
         transform: translateY(0);
@@ -87,12 +87,12 @@
       }
     }
 
-    /* Colorful sparkle effect for each folder on hover */
+    /* Apply bounce effect on hover */
     .pocket-wrapper:hover .paper-tab a {
-      animation: bounce 0.6s infinite;
+      animation: bounce 0.6s ease;
     }
 
-    /* Different colored sparkle effects */
+    /* Sparkle effects */
     .pocket-wrapper:nth-child(1):hover .paper-tab a {
       box-shadow: 0 0 8px 3px rgba(255, 0, 255, 0.7), 0 0 15px 3px rgba(255, 0, 255, 0.5);
     }
@@ -117,4 +117,61 @@
       box-shadow: 0 0 8px 3px rgba(255, 105, 180, 0.7), 0 0 15px 3px rgba(255, 105, 180, 0.5);
     }
 
-    .pocket-wrapper:nth-child(7
+    .pocket-wrapper:nth-child(7):hover .paper-tab a {
+      box-shadow: 0 0 8px 3px rgba(0, 0, 255, 0.7), 0 0 15px 3px rgba(0, 0, 255, 0.5);
+    }
+
+    .pocket {
+      width: 100%;
+      height: 170px;
+      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+      border: 4px solid #b39ddb;
+      border-top: none;
+      border-radius: 0 0 40px 40px;
+      text-align: center;
+      padding-top: 55px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #4a148c;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>A Classroom Survival Guide: An Educator's Archive</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
+        <div class="pocket">Teaching Textbook</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
+        <div class="pocket">Unit Lesson Plan</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
+        <div class="pocket">Teaching Philosophy</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
+        <div class="pocket">Book List</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
+        <div class="pocket">Course Reflection</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
+        <div class="pocket">All Assignments / The End</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project
