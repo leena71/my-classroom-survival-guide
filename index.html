@@ -54,7 +54,9 @@
     .paper-tab {
       width: 100%;
       height: 55px;
-      background: none; /* No background */
+      background: white; /* Ensure the tab remains white */
+      border-radius: 12px 12px 0 0;
+      border: 1px solid #ccc;
       text-align: center;
       font-size: 18px;
       font-weight: bold;
@@ -94,7 +96,7 @@
       animation: jump 0.6s ease forwards; /* Trigger jump on hover */
     }
 
-    /* Glitter or Firework Effect */
+    /* Glitter or Firework Effect (Dots/Particles instead of Solid Circle) */
     .pocket-wrapper:hover .glitter {
       opacity: 1;
       animation: sparkle 1.5s infinite ease-in-out;
@@ -106,25 +108,57 @@
       left: 50%;
       width: 200px;
       height: 200px;
-      background: radial-gradient(circle, rgba(255, 255, 0, 0.6), rgba(255, 0, 0, 0.5), rgba(0, 255, 255, 0.3));
-      border-radius: 50%;
       transform: translate(-50%, -50%);
       opacity: 0;
+      pointer-events: none;
+      z-index: 1;
     }
 
     /* Animation for Glitter */
     @keyframes sparkle {
       0% {
-        transform: scale(0);
         opacity: 1;
       }
       50% {
-        transform: scale(1.2);
-        opacity: 0.6;
+        opacity: 0.4;
       }
       100% {
-        transform: scale(1.5);
         opacity: 0;
+      }
+    }
+
+    /* Dots for Glitter/Fireworks */
+    .glitter::before, .glitter::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background-color: #ffd700; /* Gold Sparkle */
+      width: 6px;
+      height: 6px;
+      animation: dotMovement 1.5s infinite ease-in-out;
+    }
+
+    .glitter::before {
+      top: 40%;
+      left: 20%;
+      animation-delay: 0.2s;
+    }
+
+    .glitter::after {
+      top: 60%;
+      left: 80%;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes dotMovement {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(20px, -20px);
+      }
+      100% {
+        transform: translate(-20px, 20px);
       }
     }
 
