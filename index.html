@@ -42,11 +42,12 @@
 
     .pocket-wrapper {
       width: 300px;
-      height: 250px; /* Increased from 230px */
+      height: 250px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
+      cursor: pointer; /* Makes it feel interactive */
     }
 
     .paper-tab {
@@ -60,6 +61,12 @@
       font-weight: bold;
       line-height: 55px;
       z-index: 2;
+      transition: transform 0.3s ease; /* Smooth animation */
+    }
+
+    /* Paper tab jumps up slightly when hovering over the whole pocket-wrapper */
+    .pocket-wrapper:hover .paper-tab {
+      transform: translateY(-12px);
     }
 
     .paper-tab a {
@@ -72,13 +79,13 @@
 
     .pocket {
       width: 100%;
-      height: 170px; /* Increased from 150px */
+      height: 170px;
       background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
       border: 4px solid #b39ddb;
       border-top: none;
       border-radius: 0 0 40px 40px;
       text-align: center;
-      padding-top: 55px; /* Adjusted for vertical alignment */
+      padding-top: 55px;
       font-size: 18px;
       font-weight: bold;
       color: #4a148c;
