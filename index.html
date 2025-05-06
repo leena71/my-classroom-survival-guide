@@ -1,101 +1,71 @@
-
-
 import streamlit as st
 
-# Set page configuration for a wide layout
 st.set_page_config(layout="wide")
+st.title("A Classroom Survival Guide: An Educator's Archive")
 
-# Apply pastel blue background using custom CSS
 st.markdown("""
-    <style>
-        body {
-            background-color: #e3f2fd;  /* Pastel Blue */
-            margin: 0;
-            padding: 0;
-        }
+<style>
+/* More space below the title */
+h1 {
+    margin-bottom: 60px;
+}
 
-        /* Title styling */
-        .custom-title {
-            text-align: center;
-            font-size: 38px;
-            font-weight: 600;
-            font-family: 'Playfair Display', serif;
-            margin-top: 50px;
-            margin-bottom: 80px;
-        }
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    margin-top: 20px;
+}
+.row {
+    display: flex;
+    justify-content: space-evenly; /* fills available space with even gaps */
+    gap: 40px; /* slightly smaller side gaps */
+    width: 100%;
+    max-width: 1200px; /* limit max width to avoid edge-hugging */
+}
+.pocket-wrapper {
+    position: relative;
+    width: 300px;
+    height: 360px;
+}
+.paper-tab {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 55px;
+    background: white;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 55px;
+    z-index: 2;
+}
+.paper-tab a {
+    color: #4a148c;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.pocket {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+    border: 4px solid #b39ddb;
+    border-radius: 0 0 40px 40px;
+    text-align: center;
+    padding-top: 140px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+</style>
 
-        /* Pocket layout and text with Arapey font */
-        .container, .row, .pocket-wrapper, .paper-tab, .pocket {
-            font-family: 'Arapey', serif;
-        }
-
-        /* Pocket layout */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 80px;
-        }
-        .row {
-            display: flex;
-            justify-content: space-evenly;
-            gap: 40px;
-            width: 100%;
-            max-width: 1200px;
-        }
-        .pocket-wrapper {
-            position: relative;
-            width: 300px;
-            height: 360px;
-        }
-        .paper-tab {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 55px;
-            background: white;
-            border-radius: 12px 12px 0 0;
-            border: 1px solid #ccc;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 55px;
-            z-index: 2;
-        }
-        .paper-tab a {
-            color: #4a148c;
-            text-decoration: none;
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        .pocket {
-            position: absolute;
-            top: 45px;
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
-            border: 4px solid #b39ddb;
-            border-radius: 0 0 40px 40px;
-            text-align: center;
-            padding-top: 140px;
-            font-size: 20px;
-            font-weight: bold;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-# Load fonts
-st.markdown("""
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
-""", unsafe_allow_html=True)
-
-# Title and pocket layout
-st.markdown("""
-<div class="custom-title">A Classroom Survival Guide: An Educator's Archive</div>
-
-<!-- Pockets layout -->
 <div class="container">
   <div class="row">
     <div class="pocket-wrapper">
@@ -133,3 +103,7 @@ st.markdown("""
   </div>
 </div>
 """, unsafe_allow_html=True)
+
+
+
+
