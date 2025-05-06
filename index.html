@@ -94,24 +94,33 @@
       animation: jump 0.6s ease forwards; /* Trigger jump on hover */
     }
 
-    /* Glitter / Firework effect */
-    .pocket-wrapper:hover .paper-tab::after {
-      content: '';
-      position: absolute;
-      top: -10px; /* Just above the paper tab */
-      left: 50%;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, rgba(255, 223, 0, 0.7), rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.3));
-      border-radius: 50%;
-      animation: sparkle 1s ease-out forwards;
-      z-index: 1;
+    /* Glitter or Firework Effect */
+    .pocket-wrapper:hover .glitter {
+      opacity: 1;
+      animation: sparkle 1.5s infinite ease-in-out;
     }
 
+    .glitter {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255, 255, 0, 0.6), rgba(255, 0, 0, 0.5), rgba(0, 255, 255, 0.3));
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+
+    /* Animation for Glitter */
     @keyframes sparkle {
       0% {
         transform: scale(0);
         opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.6;
       }
       100% {
         transform: scale(1.5);
@@ -144,14 +153,17 @@
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
         <div class="pocket">Teaching Textbook</div>
+        <div class="glitter"></div> <!-- Glitter effect -->
       </div>
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
         <div class="pocket">Unit Lesson Plan</div>
+        <div class="glitter"></div> <!-- Glitter effect -->
       </div>
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
         <div class="pocket">Teaching Philosophy</div>
+        <div class="glitter"></div> <!-- Glitter effect -->
       </div>
     </div>
 
@@ -159,14 +171,17 @@
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
         <div class="pocket">Book List</div>
+        <div class="glitter"></div> <!-- Glitter effect -->
       </div>
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
         <div class="pocket">Course Reflection</div>
+        <div class="glitter"></div> <!-- Glitter effect -->
       </div>
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
         <div class="pocket">All Assignments / The End</div>
+        <div class="glitter"></div> <!-- Glitter effect -->
       </div>
     </div>
 
@@ -174,6 +189,7 @@
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
         <div class="pocket">Invention Project</div>
+        <div class="glitter"></div> <!-- Glitter effect -->
       </div>
     </div>
   </div>
