@@ -1,43 +1,142 @@
-<div class="container">
-  <!-- Pocket 1 -->
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
-    <div class="pocket"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Classroom Survival Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Arapey', serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2em;
+      margin-top: 50px;
+      margin-bottom: 60px;
+      color: #4a148c;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .pocket-wrapper {
+      position: relative;
+      width: 250px;
+      height: 260px;
+    }
+
+    .paper-tab {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 40px;
+      background: white;
+      border-radius: 10px 10px 0 0;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 40px;
+      z-index: 2;
+    }
+
+    .paper-tab a {
+      color: #4a148c;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .pocket {
+      position: absolute;
+      top: 35px;
+      width: 100%;
+      height: 210px;
+      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+      border: 3px solid #b39ddb;
+      border-radius: 0 0 30px 30px;
+      text-align: center;
+      padding-top: 80px;
+      font-weight: bold;
+      font-size: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .pocket a {
+      color: #4a148c;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="title">Classroom Survival Guide: An Educator's Archive</h1>
+
+  <div class="container">
+    <!-- Row 1 -->
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
+        <div class="pocket"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
+      </div>
+
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
+        <div class="pocket"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
+      </div>
+
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/Teaching Philosophy.pdf" target="_blank">Teaching Philosophy</a></div>
+        <div class="pocket"><a href="files/Teaching Philosophy.pdf" target="_blank">Teaching Philosophy</a></div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/Book List.pdf" target="_blank">Book List</a></div>
+        <div class="pocket"><a href="files/Book List.pdf" target="_blank">Book List</a></div>
+      </div>
+
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/Course Reflection.pdf" target="_blank">Course Reflection</a></div>
+        <div class="pocket"><a href="files/Course Reflection.pdf" target="_blank">Course Reflection</a></div>
+      </div>
+
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/InventionProject.pdf" target="_blank">Invention Project</a></div>
+        <div class="pocket"><a href="files/InventionProject.pdf" target="_blank">Invention Project</a></div>
+      </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/AllAssignments-TheEnd.pdf" target="_blank">All Assignments + The End</a></div>
+        <div class="pocket"><a href="files/AllAssignments-TheEnd.pdf" target="_blank">All Assignments + The End</a></div>
+      </div>
+    </div>
   </div>
 
-  <!-- Pocket 2 -->
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/Teaching Philosophy.pdf" target="_blank">Teaching Philosophy</a></div>
-    <div class="pocket"><a href="files/Teaching Philosophy.pdf" target="_blank">Teaching Philosophy</a></div>
-  </div>
-
-  <!-- Pocket 3 -->
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/InventionProject.pdf" target="_blank">Invention Project</a></div>
-    <div class="pocket"><a href="files/InventionProject.pdf" target="_blank">Invention Project</a></div>
-  </div>
-
-  <!-- Pocket 4 -->
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/Course Reflection.pdf" target="_blank">Course Reflection</a></div>
-    <div class="pocket"><a href="files/Course Reflection.pdf" target="_blank">Course Reflection</a></div>
-  </div>
-
-  <!-- Pocket 5 -->
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/Book List.pdf" target="_blank">Book List</a></div>
-    <div class="pocket"><a href="files/Book List.pdf" target="_blank">Book List</a></div>
-  </div>
-
-  <!-- Pocket 6 -->
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/All Assignments.pdf" target="_blank">All Assignments</a></div>
-    <div class="pocket"><a href="files/All Assignments.pdf" target="_blank">All Assignments</a></div>
-  </div>
-
-  <!-- Pocket 7 -->
-  <div class="pocket-wrapper">
-    <div class="paper-tab"><a href="files/The End.pdf" target="_blank">The End</a></div>
-    <div class="pocket"><a href="files/The End.pdf" target="_blank">The End</a></div>
-  </div>
-</div>
+</body>
+</html>
