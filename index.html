@@ -54,7 +54,7 @@
     .paper-tab {
       width: 100%;
       height: 55px;
-      background: none; /* Removed background */
+      background: none; /* No background */
       text-align: center;
       font-size: 18px;
       font-weight: bold;
@@ -71,27 +71,52 @@
       height: 100%;
     }
 
-    /* Subtle Jump Effect */
+    /* Fixing Jump Effect */
     @keyframes jump {
       0% {
         transform: translateY(0); /* Start at original position */
       }
       30% {
-        transform: translateY(-8px); /* Move up slightly */
+        transform: translateY(-8px); /* Jump upwards */
       }
       50% {
-        transform: translateY(0); /* Return to original position */
+        transform: translateY(0); /* Back to original position */
       }
       70% {
         transform: translateY(-5px); /* Slight second jump */
       }
       100% {
-        transform: translateY(0); /* End at original position */
+        transform: translateY(0); /* End back at the original position */
       }
     }
 
     .pocket-wrapper:hover .paper-tab {
       animation: jump 0.6s ease forwards; /* Trigger jump on hover */
+    }
+
+    /* Glitter / Firework effect */
+    .pocket-wrapper:hover .paper-tab::after {
+      content: '';
+      position: absolute;
+      top: -10px; /* Just above the paper tab */
+      left: 50%;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 223, 0, 0.7), rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.3));
+      border-radius: 50%;
+      animation: sparkle 1s ease-out forwards;
+      z-index: 1;
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
     }
 
     .pocket {
