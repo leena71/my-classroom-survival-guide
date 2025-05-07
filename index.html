@@ -166,7 +166,30 @@
     const welcomeModal = document.getElementById('welcomeModal');
     const nextBtn = document.getElementById('nextBtn');
     const modalText = document.getElementById('modalText');
+    
+    let step = 0;
 
-    // Show the modal
-::contentReference[oaicite:20]{index=20}
- 
+    // Show the modal when the page loads
+    window.onload = function () {
+      welcomeModal.showModal();
+    };
+
+    nextBtn.onclick = function () {
+      step++;
+      if (step === 1) {
+        modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
+        nextBtn.innerHTML = "Keep Going";
+      } else if (step === 2) {
+        modalText.innerHTML = "How exciting. Moving on!";
+        nextBtn.innerHTML = "Almost there...";
+      } else if (step === 3) {
+        modalText.innerHTML = "Here's how to navigate the website...";
+        nextBtn.innerHTML = "Let's go!";
+      } else {
+        welcomeModal.close(); // Close modal after all steps
+      }
+    };
+  </script>
+
+</body>
+</html>
