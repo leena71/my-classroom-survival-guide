@@ -6,8 +6,9 @@
   <title>Classroom Survival Guide</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
+    /* Ensuring the background stays blue for the entire page */
     body {
-      background-color: #e3f2fd;
+      background-color: #e3f2fd; /* Light blue background */
       margin: 0;
       padding: 0;
       font-family: 'Arapey', serif;
@@ -54,7 +55,7 @@
     .paper-tab {
       width: 100%;
       height: 55px;
-      background: none;
+      background: none; /* Removed background */
       text-align: center;
       font-size: 18px;
       font-weight: bold;
@@ -74,30 +75,30 @@
     /* Subtle Jump Effect */
     @keyframes jump {
       0% {
-        transform: translateY(0);
+        transform: translateY(0); /* Start at original position */
       }
       30% {
-        transform: translateY(-8px);
+        transform: translateY(-8px); /* Move up slightly */
       }
       50% {
-        transform: translateY(0);
+        transform: translateY(0); /* Return to original position */
       }
       70% {
-        transform: translateY(-5px);
+        transform: translateY(-5px); /* Slight second jump */
       }
       100% {
-        transform: translateY(0);
+        transform: translateY(0); /* End at original position */
       }
     }
 
     .pocket-wrapper:hover .paper-tab {
-      animation: jump 0.6s ease forwards;
+      animation: jump 0.6s ease forwards; /* Trigger jump on hover */
     }
 
     .pocket {
       width: 100%;
       height: 170px;
-      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff); /* Ombre gradient */
       border: 4px solid #b39ddb;
       border-top: none;
       border-radius: 0 0 40px 40px;
@@ -116,33 +117,33 @@
       left: 10px;
       width: 100px;
       height: 100px;
-      object-fit: cover;
+      object-fit: cover;  /* Ensures image fits without distortion */
       z-index: 1;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
+      background-color: transparent; /* Ensures no background color */
     }
 
-    /* Yoongi in different states */
-    .yoongi-awake {
-      opacity: 0; /* Start as hidden */
+    /* State transitions for Yoongi images */
+    .yoongi-asleep {
+      opacity: 1; /* Visible by default */
     }
 
     .yoongi-semi-awake {
-      opacity: 0; /* Start as hidden */
+      opacity: 0; /* Hidden by default */
     }
 
-    .yoongi-asleep {
-      opacity: 1; /* Initially asleep */
+    .yoongi-awake {
+      opacity: 0; /* Hidden by default */
     }
 
-    /* Hover Effects to Change Yoongi's State */
-    .pocket-wrapper:hover .yoongi-semi-awake {
-      opacity: 1; /* Show Yoongi semi-awake on hover */
+    /* Hover Effects to Change Yoongi's State for Teaching Textbook Pocket */
+    .teaching-textbook-pocket:hover .yoongi-semi-awake {
+      opacity: 1; /* Show semi-awake image on hover */
     }
 
-    /* Click Effect to Change Yoongi to Awake */
-    .pocket-wrapper.clicked .yoongi-awake {
-      opacity: 1; /* Show Yoongi awake when clicked */
+    .teaching-textbook-pocket.clicked .yoongi-awake {
+      opacity: 1; /* Show awake image when clicked */
     }
 
   </style>
@@ -165,12 +166,11 @@
         <div class="pocket">Teaching Textbook</div>
       </div>
 
-      <!-- Other Pockets -->
+      <!-- Other Pockets (Same Structure, Just Update the ID and Links as Needed) -->
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
         <div class="pocket">Unit Lesson Plan</div>
       </div>
-
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
         <div class="pocket">Teaching Philosophy</div>
