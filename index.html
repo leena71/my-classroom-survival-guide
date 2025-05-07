@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #e3f2fd; /* Light blue background for the whole body */
+      background-color: #e3f2fd; /* Keep the light blue background for the body */
       margin: 0;
       padding: 0;
       font-family: 'Arapey', serif;
@@ -23,20 +23,20 @@
       margin-bottom: 80px;
     }
 
-    /* Apply background image only to the container */
+    /* Container background image */
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 60px;
       margin-bottom: 80px;
-      background-image: url('https://i.imgur.com/fJjhjpV.png'); /* Background image applied here */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       width: 100%;
       min-height: 500px;
       position: relative;
+      background-image: url('https://i.imgur.com/fJjhjpV.png'); /* Apply image here */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       padding: 20px;
     }
 
@@ -69,7 +69,7 @@
       font-size: 18px;
       font-weight: bold;
       line-height: 55px;
-      z-index: 3; /* Paper tabs appear above the container */
+      z-index: 3;
     }
 
     .paper-tab a {
@@ -93,7 +93,7 @@
       font-weight: bold;
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      z-index: 2; /* Pockets appear above the background */
+      z-index: 2;
     }
   </style>
 </head>
@@ -142,3 +142,4 @@
 
 </body>
 </html>
+
