@@ -83,6 +83,45 @@
       font-weight: bold;
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    /* One image at the bottom */
+    .chibi-suga {
+      position: absolute;
+      bottom: -20px; /* Position Chibi at the bottom */
+      left: 50%; /* Center the image horizontally */
+      transform: translateX(-50%); /* Perfectly center */
+      width: 60px; /* Adjust the size */
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .chibi-suga:hover {
+      transform: scale(1.2); /* Enlarge on hover */
+      opacity: 0.8; /* Fade effect */
+    }
+
+    /* Left side Chibi */
+    .chibi-left {
+      position: absolute;
+      left: -20px; /* Adjust to position it to the left */
+      bottom: -20px; /* Position it at the bottom */
+      width: 60px; /* Adjust size */
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* Right side Chibi */
+    .chibi-right {
+      position: absolute;
+      right: -20px; /* Adjust to position it to the right */
+      bottom: -20px; /* Position it at the bottom */
+      width: 60px; /* Adjust size */
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .chibi-left:hover, .chibi-right:hover {
+      transform: scale(1.2); /* Enlarge on hover */
+      opacity: 0.8; /* Fade effect */
     }
 
     /* Modal Styles */
@@ -121,7 +160,10 @@
     <div class="row">
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
-        <div class="pocket">Teaching Textbook</div>
+        <div class="pocket">
+          <img src="https://www.clipartmax.com/png/middle/148-1489897_suga-dna-bts-loveyourself-chibi-cute-credit-suga-chibi-mic-drop.png" alt="Chibi Suga" class="chibi-suga">
+          Teaching Textbook
+        </div>
       </div>
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
@@ -156,7 +198,7 @@
     </div>
   </div>
 
-  Modal for Welcome -->
+  <!-- Modal for Welcome -->
   <dialog id="welcomeModal">
     <p id="modalText">Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!</p>
     <button id="nextBtn">Start</button>
@@ -167,3 +209,14 @@
     const nextBtn = document.getElementById('nextBtn');
     const modalText = document.getElementById('modalText');
     
+    // Open the modal when the page loads
+    window.onload = () => {
+      welcomeModal.showModal();
+    };
+
+    nextBtn.onclick = () => {
+      welcomeModal.close();
+    };
+  </script>
+</body>
+</html>
