@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Classroom Survival Guide</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
@@ -171,6 +171,25 @@
 
   <!-- Modal for Welcome -->
   <div id="welcomeModal" class="modal">
-    <div
+    <div class="modal-content">
+      <p>Welcome to the Classroom Survival Guide!</p>
+      <button id="closeModalBtn">Close</button>
+    </div>
+  </div>
+
+  <button id="startBtn">Start</button>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const welcomeModal = document.getElementById('welcomeModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    startBtn.addEventListener('click', () => {
+      welcomeModal.style.display = 'flex';
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      welcomeModal.style.display = 'none';
+   
 ::contentReference[oaicite:0]{index=0}
  
