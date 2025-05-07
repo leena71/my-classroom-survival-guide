@@ -86,47 +86,24 @@
       position: relative;
     }
 
-    /* One image at the bottom */
+    /* Chibi Image Styles */
     .chibi-suga {
       position: absolute;
-      bottom: -20px; /* Position Chibi at the bottom */
-      left: 50%; /* Center the image horizontally */
-      transform: translateX(-50%); /* Perfectly center */
-      width: 60px; /* Adjust the size */
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
       transition: transform 0.3s, opacity 0.3s;
     }
 
     .chibi-suga:hover {
-      transform: scale(1.2); /* Enlarge on hover */
-      opacity: 0.8; /* Fade effect */
-    }
-
-    /* Left side Chibi */
-    .chibi-left {
-      position: absolute;
-      left: -20px; /* Adjust to position it to the left */
-      bottom: -20px; /* Position it at the bottom */
-      width: 60px; /* Adjust size */
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
-    /* Right side Chibi */
-    .chibi-right {
-      position: absolute;
-      right: -20px; /* Adjust to position it to the right */
-      bottom: -20px; /* Position it at the bottom */
-      width: 60px; /* Adjust size */
-      transition: transform 0.3s, opacity 0.3s;
-    }
-
-    .chibi-left:hover, .chibi-right:hover {
-      transform: scale(1.2); /* Enlarge on hover */
-      opacity: 0.8; /* Fade effect */
+      transform: scale(1.2);
+      opacity: 0.8;
     }
 
     /* Modal Styles */
     dialog {
-      background-color: #fbe9f1; /* Light pastel pink */
+      background-color: #fbe9f1;
       border-radius: 15px;
       padding: 30px;
       width: 80%;
@@ -134,6 +111,7 @@
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       border: none;
+      display: block; /* Ensure the dialog is displayed */
     }
 
     button {
@@ -161,6 +139,7 @@
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
         <div class="pocket">
+          <!-- Chibi Image inside the pocket -->
           <img src="https://www.clipartmax.com/png/middle/148-1489897_suga-dna-bts-loveyourself-chibi-cute-credit-suga-chibi-mic-drop.png" alt="Chibi Suga" class="chibi-suga">
           Teaching Textbook
         </div>
@@ -207,12 +186,9 @@
   <script>
     const welcomeModal = document.getElementById('welcomeModal');
     const nextBtn = document.getElementById('nextBtn');
-    const modalText = document.getElementById('modalText');
     
-    // Open the modal when the page loads
-    window.onload = () => {
-      welcomeModal.showModal();
-    };
+    // Show the modal immediately when the page loads
+    welcomeModal.showModal();
 
     nextBtn.onclick = () => {
       welcomeModal.close();
