@@ -71,6 +71,7 @@
       height: 100%;
     }
 
+    /* Subtle Jump Effect */
     @keyframes jump {
       0% {
         transform: translateY(0);
@@ -121,25 +122,27 @@
       transition: opacity 0.3s ease-in-out;
     }
 
+    /* Yoongi in different states */
     .yoongi-awake {
-      opacity: 0;
+      opacity: 0; /* Start as hidden */
     }
 
     .yoongi-semi-awake {
-      opacity: 0;
+      opacity: 0; /* Start as hidden */
     }
 
     .yoongi-asleep {
-      opacity: 1;
+      opacity: 1; /* Initially asleep */
     }
 
     /* Hover Effects to Change Yoongi's State */
     .pocket-wrapper:hover .yoongi-semi-awake {
-      opacity: 1; /* Yoongi semi-awake on hover */
+      opacity: 1; /* Show Yoongi semi-awake on hover */
     }
 
+    /* Click Effect to Change Yoongi to Awake */
     .pocket-wrapper.clicked .yoongi-awake {
-      opacity: 1; /* Yoongi awake when clicked */
+      opacity: 1; /* Show Yoongi awake when clicked */
     }
 
   </style>
@@ -162,13 +165,12 @@
         <div class="pocket">Teaching Textbook</div>
       </div>
 
-      <!-- Unit Lesson Plan Pocket -->
+      <!-- Other Pockets -->
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
         <div class="pocket">Unit Lesson Plan</div>
       </div>
 
-      <!-- Teaching Philosophy Pocket -->
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
         <div class="pocket">Teaching Philosophy</div>
@@ -207,4 +209,3 @@
 
 </body>
 </html>
-
