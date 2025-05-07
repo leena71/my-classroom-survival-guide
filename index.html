@@ -6,7 +6,6 @@
   <title>Classroom Survival Guide</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
-    /* Body Style */
     body {
       background-color: #ffffff; /* White background */
       margin: 0;
@@ -14,7 +13,6 @@
       font-family: 'Arapey', serif;
     }
 
-    /* Title Styling */
     h1 {
       text-align: center;
       font-size: 42px;
@@ -25,7 +23,6 @@
       margin-bottom: 80px;
     }
 
-    /* Container for the pockets */
     .container {
       display: flex;
       flex-direction: column;
@@ -43,7 +40,6 @@
       max-width: 1300px;
     }
 
-    /* Pocket Wrapper Style */
     .pocket-wrapper {
       width: 300px;
       height: 250px;
@@ -55,11 +51,10 @@
       position: relative;
     }
 
-    /* Paper Tab (text area) Styling */
     .paper-tab {
       width: 100%;
       height: 55px;
-      background: none;
+      background: none; /* Removed background */
       text-align: center;
       font-size: 18px;
       font-weight: bold;
@@ -76,30 +71,29 @@
       height: 100%;
     }
 
-    /* Subtle Jump Effect on Hover */
+    /* Subtle Jump Effect */
     @keyframes jump {
       0% {
-        transform: translateY(0); 
+        transform: translateY(0); /* Start at original position */
       }
       30% {
-        transform: translateY(-8px); 
+        transform: translateY(-8px); /* Move up slightly */
       }
       50% {
-        transform: translateY(0); 
+        transform: translateY(0); /* Return to original position */
       }
       70% {
-        transform: translateY(-5px); 
+        transform: translateY(-5px); /* Slight second jump */
       }
       100% {
-        transform: translateY(0); 
+        transform: translateY(0); /* End at original position */
       }
     }
 
     .pocket-wrapper:hover .paper-tab {
-      animation: jump 0.6s ease forwards; 
+      animation: jump 0.6s ease forwards; /* Trigger jump on hover */
     }
 
-    /* Pocket Style (like a paper pocket) */
     .pocket {
       width: 100%;
       height: 170px;
@@ -120,7 +114,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 100px; /* Adjust image size */
+      width: 100px;
       height: 100px;
       object-fit: cover;
       z-index: 1;
@@ -140,13 +134,13 @@
       opacity: 1; /* Initially visible (sleeping state) */
     }
 
-    /* Change states for Teaching Textbook Pocket on Hover and Click */
+    /* Hover Effects to Change Yoongi's State for Teaching Textbook Pocket */
     .teaching-textbook-pocket:hover .yoongi-semi-awake {
-      opacity: 1;
+      opacity: 1; /* Show semi-awake image on hover */
     }
 
     .teaching-textbook-pocket.clicked .yoongi-awake {
-      opacity: 1;
+      opacity: 1; /* Show awake image when clicked */
     }
 
   </style>
