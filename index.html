@@ -47,17 +47,14 @@
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
+      cursor: pointer;
       position: relative;
-      background-color: white; /* Entire pocket background is white */
-      border: 4px solid #b39ddb;
-      border-radius: 20px; /* Rounded corners */
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
     .paper-tab {
       width: 100%;
       height: 55px;
-      background: none;
+      background: none; /* Removed background */
       text-align: center;
       font-size: 18px;
       font-weight: bold;
@@ -100,7 +97,8 @@
     .pocket {
       width: 100%;
       height: 170px;
-      background: white; /* Keep the white background for the paper */
+      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+      border: 4px solid #b39ddb;
       border-top: none;
       border-radius: 0 0 40px 40px;
       text-align: center;
@@ -108,21 +106,7 @@
       font-size: 18px;
       font-weight: bold;
       color: #4a148c;
-      position: relative;
-    }
-
-    /* Add Yoongi images */
-    .pocket-wrapper .yoongi-image {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 70%;
-      transition: transform 0.3s ease;
-    }
-
-    .pocket-wrapper:hover .yoongi-image {
-      transform: translateX(-50%) scale(1.2); /* Yoongi image grows when hovered */
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
   </style>
 </head>
@@ -133,8 +117,6 @@
   <div class="container">
     <div class="row">
       <div class="pocket-wrapper">
-        <!-- Yoongi Image (Change the URL to your own image) -->
-        <img src="https://i.imgur.com/4j6dAfT.png" alt="Yoongi" class="yoongi-image">
         <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
         <div class="pocket">Teaching Textbook</div>
       </div>
@@ -173,3 +155,4 @@
 
 </body>
 </html>
+
