@@ -112,7 +112,7 @@
       background-color: #7b1fa2;
     }
 
-    /* Music Player Styling */
+    /* Music Player Styles */
     .music-player {
       width: 100%;
       max-width: 600px;
@@ -123,18 +123,35 @@
       border: none;
     }
 
-    /* Hide all unnecessary text and borders from Spotify iframe */
     iframe {
-      border: none;
       width: 100%;
-      max-width: 600px;
-      height: 152px;
+      height: 315px;
+      border: none;
       border-radius: 12px;
     }
 
-    .music-player iframe {
-      background-color: #fff !important; /* Try to make the background white */
+    .playlist {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 40px;
+      font-size: 18px;
+      font-weight: bold;
     }
+
+    .playlist li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .playlist li:hover {
+      background-color: #f4a3d6;
+    }
+
   </style>
 </head>
 <body>
@@ -179,9 +196,23 @@
       </div>
     </div>
 
-    <!-- Embed Spotify Playlist Here -->
+    <!-- BTS Playlist -->
     <div class="music-player">
-      <iframe src="https://open.spotify.com/embed/playlist/1Z4UUsWDn13j2O0pzoUojT?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <h2>BTS Playlist</h2>
+      <ul class="playlist">
+        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
+      </ul>
+      <iframe id="audioIframe" src="https://www.youtube.com/embed/gdZLi9oWNZg" allow="autoplay; encrypted-media" loading="lazy"></iframe>
     </div>
 
   </div>
@@ -226,6 +257,10 @@
     // Close the modal
     function closeModal() {
       welcomeModal.close();
+    }
+
+    function playAudio(url) {
+      document.getElementById('audioIframe').src = url;
     }
   </script>
 </body>
