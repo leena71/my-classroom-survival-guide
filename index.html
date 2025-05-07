@@ -94,6 +94,7 @@
       transform: translateX(-50%);
       width: 60px;
       transition: transform 0.3s, opacity 0.3s;
+      z-index: 3; /* Ensures it stays on top */
     }
 
     .chibi-suga:hover {
@@ -111,7 +112,9 @@
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       border: none;
-      display: block; /* Ensure the dialog is displayed */
+      display: block;
+      border-radius: 12px;
+      padding: 20px;
     }
 
     button {
@@ -127,6 +130,17 @@
 
     button:hover {
       background-color: #7b1fa2;
+    }
+
+    /* Styles for the buttons below the modal */
+    .buttons-wrapper {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .buttons-wrapper button {
+      margin: 0 10px;
     }
   </style>
 </head>
@@ -180,7 +194,9 @@
   <!-- Modal for Welcome -->
   <dialog id="welcomeModal">
     <p id="modalText">Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!</p>
-    <button id="nextBtn">Start</button>
+    <div class="buttons-wrapper">
+      <button id="nextBtn">Start</button>
+    </div>
   </dialog>
 
   <script>
