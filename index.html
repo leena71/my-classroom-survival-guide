@@ -29,8 +29,6 @@
       align-items: center;
       gap: 60px;
       margin-bottom: 80px;
-      width: 100%;
-      padding: 20px;
     }
 
     .row {
@@ -44,82 +42,71 @@
 
     .pocket-wrapper {
       width: 300px;
-      height: 230px;
+      height: 250px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
+      cursor: pointer;
       position: relative;
     }
 
     .paper-tab {
       width: 100%;
       height: 55px;
-      background: white;
-      border-radius: 12px 12px 0 0;
-      border: 1px solid #ccc;
+      background: none; /* Removed background */
       text-align: center;
       font-size: 18px;
       font-weight: bold;
       line-height: 55px;
-      z-index: 3;
+      z-index: 2;
+      transition: transform 0.3s ease;
     }
 
     .paper-tab a {
       color: #4a148c;
       text-decoration: none;
-      display: block;
+      display: inline-block;
       width: 100%;
       height: 100%;
     }
 
+    /* Subtle Jump Effect */
+    @keyframes jump {
+      0% {
+        transform: translateY(0); /* Start at original position */
+      }
+      30% {
+        transform: translateY(-8px); /* Move up slightly */
+      }
+      50% {
+        transform: translateY(0); /* Return to original position */
+      }
+      70% {
+        transform: translateY(-5px); /* Slight second jump */
+      }
+      100% {
+        transform: translateY(0); /* End at original position */
+      }
+    }
+
+    .pocket-wrapper:hover .paper-tab {
+      animation: jump 0.6s ease forwards; /* Trigger jump on hover */
+    }
+
     .pocket {
       width: 100%;
-      height: 150px;
+      height: 170px;
       background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
       border: 4px solid #b39ddb;
       border-top: none;
       border-radius: 0 0 40px 40px;
       text-align: center;
-      padding-top: 45px;
+      padding-top: 55px;
       font-size: 18px;
       font-weight: bold;
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      position: relative;
-    }
-
-    /* Yoongi image hover effect */
-    .yoongi-state {
-      position: absolute;
-      top: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      height: auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1;
-    }
-
-    .yoongi-img {
-      width: 100%;
-      height: auto;
-      transition: opacity 0.3s ease;
-      position: absolute;
-    }
-
-    .yoongi-img.awake {
-      opacity: 0;
-    }
-
-    .pocket:hover .yoongi-img.awake {
-      opacity: 1;
-    }
-
-    .pocket:hover .yoongi-img.half-asleep {
-      opacity: 0;
     }
   </style>
 </head>
@@ -129,21 +116,10 @@
 
   <div class="container">
     <div class="row">
-      <!-- Teaching Textbook with Yoongi hover effect -->
       <div class="pocket-wrapper">
-        <div class="paper-tab">
-          <a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a>
-        </div>
-        <div class="pocket">
-          <div class="yoongi-state">
-            <img src="https://i.imgur.com/1TyOh14.png" alt="Yoongi Half Asleep" class="yoongi-img half-asleep">
-            <img src="https://i.imgur.com/2mG4bBe.png" alt="Yoongi Awake" class="yoongi-img awake">
-          </div>
-          Teaching Textbook
-        </div>
+        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
+        <div class="pocket">Teaching Textbook</div>
       </div>
-
-      <!-- Other pockets -->
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
         <div class="pocket">Unit Lesson Plan</div>
