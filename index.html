@@ -157,15 +157,47 @@
   </div>
 
   <!-- Modal for Welcome -->
-  <dialog id="welcomeModal">
-    <p id="modalText">Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!</p>
-    <button id="nextBtn">Start</button>
-  </dialog>
+<dialog id="welcomeModal">
+  <p id="modalText">Welcome to an educator's guide!</p>
+  <button id="nextBtn">Start</button>
+</dialog>
 
-  <script>
-    const welcomeModal = document.getElementById('welcomeModal');
-    const nextBtn = document.getElementById('nextBtn');
-    const modalText = document.getElementById('modalText');
+<script>
+  const welcomeModal = document.getElementById('welcomeModal');
+  const nextBtn = document.getElementById('nextBtn');
+  const modalText = document.getElementById('modalText');
+
+  // Show the modal on page load
+  window.onload = () => {
+    welcomeModal.showModal();
+  };
+
+  // Step 1: Welcome message
+  nextBtn.onclick = () => {
+    modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
+    nextBtn.innerHTML = "Keep Going"; // Change button text
+    nextBtn.onclick = step2; // Set next function
+  };
+
+  // Step 2: "How exciting" message
+  function step2() {
+    modalText.innerHTML = "How exciting. Moving on!";
+    nextBtn.innerHTML = "Almost There..."; // Change button text
+    nextBtn.onclick = step3; // Set next function
+  }
+
+  // Step 3: Tutorial message
+  function step3() {
+    modalText.innerHTML = "Here's how to navigate the website...";
+    nextBtn.innerHTML = "Let's Go!"; // Change button text
+    nextBtn.onclick = closeModal; // Close modal on final step
+  }
+
+  // Close the modal
+  function closeModal() {
+    welcomeModal.close();
+  }
+</script>
 
     // Show the modal
 ::contentReference[oaicite:20]{index=20}
