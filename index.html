@@ -83,28 +83,11 @@
       font-weight: bold;
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      position: relative;
-    }
-
-    /* Chibi Image Styles */
-    .chibi-suga {
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      transition: transform 0.3s, opacity 0.3s;
-      z-index: 3; /* Ensures it stays on top */
-    }
-
-    .chibi-suga:hover {
-      transform: scale(1.2);
-      opacity: 0.8;
     }
 
     /* Modal Styles */
     dialog {
-      background-color: #fbe9f1;
+      background-color: #fbe9f1; /* Light pastel pink */
       border-radius: 15px;
       padding: 30px;
       width: 80%;
@@ -112,9 +95,6 @@
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       border: none;
-      display: block;
-      border-radius: 12px;
-      padding: 20px;
     }
 
     button {
@@ -131,26 +111,6 @@
     button:hover {
       background-color: #7b1fa2;
     }
-
-    /* Styles for the buttons below the modal */
-    .buttons-wrapper {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .buttons-wrapper button {
-      margin: 0 10px;
-    }
-
-    /* Playlist Container Styles */
-    .playlist-container {
-      width: 100%;
-      max-width: 600px;
-      margin: 50px 0;
-      display: flex;
-      justify-content: center;
-    }
   </style>
 </head>
 <body>
@@ -161,11 +121,7 @@
     <div class="row">
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
-        <div class="pocket">
-          <!-- Chibi Image inside the pocket -->
-          <img src="https://www.clipartmax.com/png/middle/148-1489897_suga-dna-bts-loveyourself-chibi-cute-credit-suga-chibi-mic-drop.png" alt="Chibi Suga" class="chibi-suga">
-          Teaching Textbook
-        </div>
+        <div class="pocket">Teaching Textbook</div>
       </div>
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
@@ -202,27 +158,45 @@
 
   <!-- Modal for Welcome -->
   <dialog id="welcomeModal">
-    <p id="modalText">Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!</p>
-    <div class="buttons-wrapper">
-      <button id="nextBtn">Start</button>
-    </div>
+    <p id="modalText">Welcome to an educator's guide!</p>
+    <button id="nextBtn">Start</button>
   </dialog>
-
-  <!-- YouTube Playlist Embed Section -->
-  <div class="playlist-container">
-    <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?si=ynIsT1IBgj1DW8YI&amp;list=PL1PFbmtveDSEUZvgZ5_ZolD4dw5NdWI5n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
 
   <script>
     const welcomeModal = document.getElementById('welcomeModal');
     const nextBtn = document.getElementById('nextBtn');
-    
-    // Show the modal immediately when the page loads
-    welcomeModal.showModal();
+    const modalText = document.getElementById('modalText');
 
-    nextBtn.onclick = () => {
-      welcomeModal.close();
+    // Show the modal on page load
+    window.onload = () => {
+      welcomeModal.showModal();
     };
+
+    // Step 1: Welcome message
+    nextBtn.onclick = () => {
+      modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
+      nextBtn.innerHTML = "Keep Going"; // Change button text
+      nextBtn.onclick = step2; // Set next function
+    };
+
+    // Step 2: "How exciting" message
+    function step2() {
+      modalText.innerHTML = "How exciting. Moving on!";
+      nextBtn.innerHTML = "Almost There..."; // Change button text
+      nextBtn.onclick = step3; // Set next function
+    }
+
+    // Step 3: Tutorial message
+    function step3() {
+      modalText.innerHTML = "Here's how to navigate the website...";
+      nextBtn.innerHTML = "Let's Go!"; // Change button text
+      nextBtn.onclick = closeModal; // Close modal on final step
+    }
+
+    // Close the modal
+    function closeModal() {
+      welcomeModal.close();
+    }
   </script>
 </body>
 </html>
