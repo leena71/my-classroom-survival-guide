@@ -85,33 +85,6 @@
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
-    /* Modal Styles */
-    dialog {
-      background-color: #fbe9f1; /* Light pastel pink */
-      border-radius: 15px;
-      padding: 30px;
-      width: 80%;
-      max-width: 500px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      border: none;
-    }
-
-    button {
-      background-color: #4a148c;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: #7b1fa2;
-    }
-
     /* Music Player Styles */
     .music-player {
       width: 100%;
@@ -124,7 +97,12 @@
     }
 
     iframe {
-      display: none; /* Hide the iframe */
+      display: none; /* Initially hide the iframe */
+      width: 100%;
+      max-width: 600px;
+      height: 315px;
+      border-radius: 12px;
+      margin-top: 20px;
     }
 
     .playlist {
@@ -209,6 +187,8 @@
         <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
         <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
       </ul>
+
+      <!-- Embedded iframe, initially hidden -->
       <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
     </div>
 
@@ -233,32 +213,4 @@
     // Step 1: Welcome message
     nextBtn.onclick = () => {
       modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
-      nextBtn.innerHTML = "Keep Going"; // Change button text
-      nextBtn.onclick = step2; // Set next function
-    };
-
-    // Step 2: "How exciting" message
-    function step2() {
-      modalText.innerHTML = "How exciting. Moving on!";
-      nextBtn.innerHTML = "Almost There..."; // Change button text
-      nextBtn.onclick = step3; // Set next function
-    }
-
-    // Step 3: Tutorial message
-    function step3() {
-      modalText.innerHTML = "Here's how to navigate the website...";
-      nextBtn.innerHTML = "Let's Go!"; // Change button text
-      nextBtn.onclick = closeModal; // Close modal on final step
-    }
-
-    // Close the modal
-    function closeModal() {
-      welcomeModal.close();
-    }
-
-    function playAudio(url) {
-      document.getElementById('audioIframe').src = url;
-    }
-  </script>
-</body>
-</html>
+      nextBtn.innerHTML = "Keep Going";
