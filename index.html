@@ -6,13 +6,15 @@
   <title>Classroom Survival Guide</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
+    /* Body Style */
     body {
-      background-color: #ffffff; /* White background for paper effect */
+      background-color: #ffffff; /* White background */
       margin: 0;
       padding: 0;
       font-family: 'Arapey', serif;
     }
 
+    /* Title Styling */
     h1 {
       text-align: center;
       font-size: 42px;
@@ -23,6 +25,7 @@
       margin-bottom: 80px;
     }
 
+    /* Container for the pockets */
     .container {
       display: flex;
       flex-direction: column;
@@ -40,6 +43,7 @@
       max-width: 1300px;
     }
 
+    /* Pocket Wrapper Style */
     .pocket-wrapper {
       width: 300px;
       height: 250px;
@@ -51,10 +55,11 @@
       position: relative;
     }
 
+    /* Paper Tab (text area) Styling */
     .paper-tab {
       width: 100%;
       height: 55px;
-      background: none; 
+      background: none;
       text-align: center;
       font-size: 18px;
       font-weight: bold;
@@ -71,7 +76,7 @@
       height: 100%;
     }
 
-    /* Subtle Jump Effect */
+    /* Subtle Jump Effect on Hover */
     @keyframes jump {
       0% {
         transform: translateY(0); 
@@ -94,6 +99,7 @@
       animation: jump 0.6s ease forwards; 
     }
 
+    /* Pocket Style (like a paper pocket) */
     .pocket {
       width: 100%;
       height: 170px;
@@ -109,17 +115,40 @@
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
-    /* Image Placeholder for Yoongi */
+    /* Yoongi Image Styling */
     .yoongi-image {
-      width: 100%;
-      height: 100%;
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 0;
+      width: 100px; /* Adjust image size */
+      height: 100px;
       object-fit: cover;
       z-index: 1;
       transition: opacity 0.3s ease-in-out;
     }
+
+    /* Add different states for Yoongi */
+    .yoongi-awake {
+      opacity: 1;
+    }
+
+    .yoongi-semi-awake {
+      opacity: 0.5;
+    }
+
+    .yoongi-asleep {
+      opacity: 0;
+    }
+
+    /* Make Yoongi appear in the "Teaching Textbook" pocket */
+    .teaching-textbook-pocket:hover .yoongi-semi-awake {
+      opacity: 1;
+    }
+
+    .teaching-textbook-pocket.clicked .yoongi-awake {
+      opacity: 1;
+    }
+
   </style>
 </head>
 <body>
@@ -128,44 +157,26 @@
 
   <div class="container">
     <div class="row">
-      <div class="pocket-wrapper">
-        <!-- Yoongi's Image -->
-        <img class="yoongi-image" src="https://i.imgur.com/czrOwv9.jpeg" alt="Yoongi awake" />
+      <!-- Teaching Textbook Pocket -->
+      <div class="pocket-wrapper teaching-textbook-pocket" id="teaching-textbook">
+        <!-- Yoongi Images for Different States -->
+        <img class="yoongi-image yoongi-asleep" src="https://i.imgur.com/4xYB2Bp.jpeg" alt="Yoongi asleep">
+        <img class="yoongi-image yoongi-semi-awake" src="https://i.imgur.com/fXJi2yC.jpeg" alt="Yoongi semi-awake">
+        <img class="yoongi-image yoongi-awake" src="https://i.imgur.com/czrOwv9.jpeg" alt="Yoongi awake">
+
+        <!-- Pocket Content -->
         <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
         <div class="pocket">Teaching Textbook</div>
       </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
-        <div class="pocket">Unit Lesson Plan</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
-        <div class="pocket">Teaching Philosophy</div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
-        <div class="pocket">Book List</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
-        <div class="pocket">Course Reflection</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
-        <div class="pocket">All Assignments / The End</div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
-        <div class="pocket">Invention Project</div>
-      </div>
     </div>
   </div>
+
+  <script>
+    // JavaScript to handle the "click" effect
+    document.getElementById("teaching-textbook").addEventListener("click", function() {
+      this.classList.add("clicked");
+    });
+  </script>
 
 </body>
 </html>
