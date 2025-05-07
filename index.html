@@ -127,7 +127,7 @@
       transition: opacity 0.3s ease-in-out;
     }
 
-    /* Add different states for Yoongi */
+    /* Yoongi's Image States (asleep, semi-awake, awake) */
     .yoongi-awake {
       opacity: 0; /* Initially invisible */
     }
@@ -140,7 +140,7 @@
       opacity: 1; /* Initially visible (sleeping state) */
     }
 
-    /* Make Yoongi appear in the "Teaching Textbook" pocket */
+    /* Change states for Teaching Textbook Pocket on Hover and Click */
     .teaching-textbook-pocket:hover .yoongi-semi-awake {
       opacity: 1;
     }
@@ -157,7 +157,7 @@
 
   <div class="container">
     <div class="row">
-      <!-- Teaching Textbook Pocket -->
+      <!-- Teaching Textbook Pocket with Yoongi Images -->
       <div class="pocket-wrapper teaching-textbook-pocket" id="teaching-textbook">
         <!-- Yoongi Images for Different States -->
         <img class="yoongi-image yoongi-asleep" src="https://i.imgur.com/4xYB2Bp.jpeg" alt="Yoongi asleep">
@@ -167,6 +167,38 @@
         <!-- Pocket Content -->
         <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
         <div class="pocket">Teaching Textbook</div>
+      </div>
+
+      <!-- Other Pockets (Same Structure, Just Update the ID and Links as Needed) -->
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
+        <div class="pocket">Unit Lesson Plan</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
+        <div class="pocket">Teaching Philosophy</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
+        <div class="pocket">Book List</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
+        <div class="pocket">Course Reflection</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
+        <div class="pocket">All Assignments / The End</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
+        <div class="pocket">Invention Project</div>
       </div>
     </div>
   </div>
