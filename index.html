@@ -42,7 +42,7 @@
 
     .pocket-wrapper {
       width: 300px;
-      height: 250px; /* Increased from 230px */
+      height: 250px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -72,17 +72,51 @@
 
     .pocket {
       width: 100%;
-      height: 170px; /* Increased from 150px */
+      height: 170px;
       background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
       border: 4px solid #b39ddb;
       border-top: none;
       border-radius: 0 0 40px 40px;
       text-align: center;
-      padding-top: 55px; /* Adjusted for vertical alignment */
+      padding-top: 55px;
       font-size: 18px;
       font-weight: bold;
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -128,6 +162,43 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal for Welcome -->
+  <div id="welcomeModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p id="modalText">Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!</p>
+      <button id="nextBtn">Start</button>
+    </div>
+  </div>
+
+  <script>
+    // Get modal elements
+    var modal = document.getElementById("welcomeModal");
+    var closeBtn = document.getElementsByClassName("close")[0];
+    var nextBtn = document.getElementById("nextBtn");
+    var modalText = document.getElementById("modalText");
+
+    // Show the modal when the page loads
+    window.onload = function() {
+      modal.style.display = "block";
+    };
+
+    // Close the modal when the user clicks on <span> (x)
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    };
+
+    // Change message when "Start" is clicked
+    nextBtn.onclick = function() {
+      modalText.innerHTML = "How exciting. Moving on!";
+      nextBtn.innerHTML = "Proceed to Tutorial";
+      nextBtn.onclick = function() {
+        modalText.innerHTML = "Here's how to navigate the website...";
+        // Add tutorial content here
+      };
+    };
+  </script>
 
 </body>
 </html>
