@@ -1,67 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Classroom Survival Guide</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/dialog-polyfill/dialog-polyfill.css">
-  <style>
-    /* Your existing CSS styles */
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classroom Survival Guide</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/dialog-polyfill/dialog-polyfill.css" />
+    <style>
+      /* Your existing CSS styles */
+    </style>
+  </head>
+  <body>
+    <h1>A Classroom Survival Guide: An Educator's Archive</h1>
 
-  <h1>A Classroom Survival Guide: An Educator's Archive</h1>
+    <div class="container">
+      <!-- Your content here -->
+    </div>
 
-  <div class="container">
-    <!-- Your content here -->
-  </div>
+    <!-- Modal for Welcome -->
+    <dialog id="welcomeModal">
+      <p id="modalText">
+        Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for
+        Composition Theory & Pedagogy!
+      </p>
+      <button id="nextBtn">Start</button>
+    </dialog>
 
-  <!-- Modal for Welcome -->
-  <dialog id="welcomeModal">
-    <p id="modalText">Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!</p>
-    <button id="nextBtn">Start</button>
-  </dialog>
+    <script src="https://unpkg.com/dialog-polyfill/dialog-polyfill.js"></script>
+    <script>
+      const dialog = document.querySelector('dialog');
+      if (!dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+      }
 
-  <script src="https://unpkg.com/dialog-polyfill/dialog-polyfill.js"></script>
-  <script>
-    const dialog = document.querySelector('dialog');
-    if (!dialog.showModal) {
-      dialogPolyfill.registerDialog(dialog);
-    }
+      document.addEventListener('DOMContentLoaded', () => {
+        const welcomeModal = document.getElementById('welcomeModal');
+        welcomeModal.showModal();
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const welcomeModal = document.getElementById('welcomeModal');
-      welcomeModal.showModal();
+        const nextBtn = document.getElementById('nextBtn');
+        const modalText = document.getElementById('modalText');
+        let clickCount = 0;
 
-      const nextBtn = document.getElementById('nextBtn');
-      const modalText = document.getElementById('modalText');
-      let clickCount = 0;
-
-      nextBtn.addEventListener('click', () => {
-        clickCount++;
-        switch (clickCount) {
-          case 1:
-            modalText.textContent = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
-            nextBtn.textContent = "Keep Going";
-            break;
-          case 2:
-            modalText.textContent = "How exciting. Moving on!";
-            nextBtn.textContent = "Almost There...";
-            break;
-          case 3:
-            modalText.textContent = "Here's how to navigate the website...";
-            nextBtn.textContent = "Let's Go!";
-            break;
-          default:
-            welcomeModal.close();
-            break;
-        }
+        nextBtn.addEventListener('click', () => {
+          clickCount++;
+          switch (clickCount) {
+            case 1:
+              modalText.textContent =
+                "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
+              nextBtn.textContent = 'Keep Going';
+              break;
+            case 2:
+              modalText.textContent = 'How exciting. Moving on!';
+              nextBtn.textContent = 'Almost There...';
+              break;
+            case 3:
+              modalText.textContent = "Here's how to navigate the website...";
+              nextBtn.textContent = "Let's Go!";
+              break;
+            default:
+              welcomeModal.close();
+              break;
+          }
+        });
       });
-    });
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>
-
