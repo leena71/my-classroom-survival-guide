@@ -118,20 +118,21 @@
       height: 100px;
       object-fit: cover;
       z-index: 1;
+      opacity: 0; /* Initially invisible */
       transition: opacity 0.3s ease-in-out;
     }
 
-    /* Yoongi's Image States (asleep, semi-awake, awake) */
-    .yoongi-awake {
-      opacity: 0; /* Initially invisible */
+    /* State transitions for Yoongi images */
+    .yoongi-asleep {
+      opacity: 1; /* Visible by default */
     }
 
     .yoongi-semi-awake {
-      opacity: 0; /* Initially invisible */
+      opacity: 0; /* Hidden by default */
     }
 
-    .yoongi-asleep {
-      opacity: 1; /* Initially visible (sleeping state) */
+    .yoongi-awake {
+      opacity: 0; /* Hidden by default */
     }
 
     /* Hover Effects to Change Yoongi's State for Teaching Textbook Pocket */
