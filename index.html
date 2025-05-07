@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #e3f2fd; /* Keep the light blue background for the body */
+      background-color: #e3f2fd;
       margin: 0;
       padding: 0;
       font-family: 'Arapey', serif;
@@ -23,7 +23,6 @@
       margin-bottom: 80px;
     }
 
-    /* Container background image */
     .container {
       display: flex;
       flex-direction: column;
@@ -31,12 +30,6 @@
       gap: 60px;
       margin-bottom: 80px;
       width: 100%;
-      min-height: 500px;
-      position: relative;
-      background-image: url('https://i.imgur.com/fJjhjpV.png'); /* Apply image here */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       padding: 20px;
     }
 
@@ -93,7 +86,40 @@
       font-weight: bold;
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      z-index: 2;
+      position: relative;
+    }
+
+    /* Yoongi image hover effect */
+    .yoongi-state {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .yoongi-img {
+      width: 100%;
+      height: auto;
+      transition: opacity 0.3s ease;
+      position: absolute;
+    }
+
+    .yoongi-img.awake {
+      opacity: 0;
+    }
+
+    .pocket:hover .yoongi-img.awake {
+      opacity: 1;
+    }
+
+    .pocket:hover .yoongi-img.half-asleep {
+      opacity: 0;
     }
   </style>
 </head>
@@ -103,10 +129,21 @@
 
   <div class="container">
     <div class="row">
+      <!-- Teaching Textbook with Yoongi hover effect -->
       <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
-        <div class="pocket">Teaching Textbook</div>
+        <div class="paper-tab">
+          <a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a>
+        </div>
+        <div class="pocket">
+          <div class="yoongi-state">
+            <img src="https://i.imgur.com/1TyOh14.png" alt="Yoongi Half Asleep" class="yoongi-img half-asleep">
+            <img src="https://i.imgur.com/2mG4bBe.png" alt="Yoongi Awake" class="yoongi-img awake">
+          </div>
+          Teaching Textbook
+        </div>
       </div>
+
+      <!-- Other pockets -->
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
         <div class="pocket">Unit Lesson Plan</div>
@@ -142,4 +179,3 @@
 
 </body>
 </html>
-
