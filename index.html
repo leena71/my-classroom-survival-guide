@@ -112,19 +112,20 @@
       background-color: #7b1fa2;
     }
 
-    /* Music Player Styles */
+    /* Music Player Styling */
     .music-player {
       width: 100%;
       max-width: 600px;
       margin-top: 40px;
       text-align: center;
-      border: 2px solid red;  /* Added red border to make sure the player is visible */
       padding: 20px;
+      background-color: transparent;  /* Making background transparent */
+      border: none;  /* Remove borders */
     }
 
     iframe {
       border-radius: 12px;
-      border: 3px solid blue; /* Added blue border to iframe to ensure visibility */
+      border: none;  /* Remove iframe border */
     }
   </style>
 </head>
@@ -172,7 +173,6 @@
 
     <!-- Embed Spotify Playlist Here -->
     <div class="music-player">
-      <h2>Listen to BTS Playlist</h2>
       <iframe src="https://open.spotify.com/embed/playlist/1Z4UUsWDn13j2O0pzoUojT?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
