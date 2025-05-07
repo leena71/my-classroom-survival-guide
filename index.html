@@ -101,7 +101,7 @@
     }
 
     .modal-content {
-      background-color: #f8c7d8; /* Soft pastel pink */
+      background-color: #fbe9f1; /* Light pastel pink */
       border-radius: 15px;
       padding: 30px;
       width: 80%;
@@ -172,8 +172,8 @@
   <!-- Modal for Welcome -->
   <div id="welcomeModal" class="modal">
     <div class="modal-content">
-      <p>Welcome to the Classroom Survival Guide!</p>
-      <button id="closeModalBtn">Close</button>
+      <p id="modalText">Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!</p>
+      <button id="nextBtn">Start</button>
     </div>
   </div>
 
@@ -182,14 +182,33 @@
   <script>
     const startBtn = document.getElementById('startBtn');
     const welcomeModal = document.getElementById('welcomeModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const modalText = document.getElementById('modalText');
 
+    // Show the modal when the page loads
     startBtn.addEventListener('click', () => {
       welcomeModal.style.display = 'flex';
+      startBtn.style.display = 'none'; // Hide the Start button
     });
 
-    closeModalBtn.addEventListener('click', () => {
-      welcomeModal.style.display = 'none';
-   
-::contentReference[oaicite:0]{index=0}
- 
+    // Step 1: Show first text
+    nextBtn.addEventListener('click', () => {
+      modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
+      nextBtn.innerHTML = "How exciting. Moving on!";
+      
+      // Step 2: Show second text
+      nextBtn.addEventListener('click', () => {
+        modalText.innerHTML = "How exciting. Moving on!";
+        nextBtn.innerHTML = "Proceed to Tutorial";
+
+        // Step 3: Show tutorial text
+        nextBtn.addEventListener('click', () => {
+          modalText.innerHTML = "Here's how to navigate the website...";
+          // Add tutorial content here
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
