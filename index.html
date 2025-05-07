@@ -122,7 +122,7 @@
     }
 
     .yoongi-awake {
-      opacity: 1;
+      opacity: 0;
     }
 
     .yoongi-semi-awake {
@@ -130,16 +130,16 @@
     }
 
     .yoongi-asleep {
-      opacity: 0;
+      opacity: 1;
     }
 
     /* Hover Effects to Change Yoongi's State */
     .pocket-wrapper:hover .yoongi-semi-awake {
-      opacity: 1;
+      opacity: 1; /* Yoongi semi-awake on hover */
     }
 
     .pocket-wrapper.clicked .yoongi-awake {
-      opacity: 1;
+      opacity: 1; /* Yoongi awake when clicked */
     }
 
   </style>
@@ -152,10 +152,12 @@
     <div class="row">
       <!-- Teaching Textbook Pocket with Yoongi Images -->
       <div class="pocket-wrapper teaching-textbook-pocket" id="teaching-textbook">
+        <!-- Yoongi Images for Different States -->
         <img class="yoongi-image yoongi-asleep" src="https://i.imgur.com/4xYB2Bp.jpeg" alt="Yoongi asleep">
         <img class="yoongi-image yoongi-semi-awake" src="https://i.imgur.com/fXJi2yC.jpeg" alt="Yoongi semi-awake">
         <img class="yoongi-image yoongi-awake" src="https://i.imgur.com/czrOwv9.jpeg" alt="Yoongi awake">
 
+        <!-- Pocket Content -->
         <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
         <div class="pocket">Teaching Textbook</div>
       </div>
@@ -205,3 +207,4 @@
 
 </body>
 </html>
+
