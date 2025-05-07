@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #e3f2fd; /* Keeping the base background color */
+      background-color: #e3f2fd; /* Set a light blue background to the body */
       margin: 0;
       padding: 0;
       font-family: 'Arapey', serif;
@@ -23,6 +23,7 @@
       margin-bottom: 80px;
     }
 
+    /* Apply background image to the container only */
     .container {
       display: flex;
       flex-direction: column;
@@ -30,13 +31,13 @@
       gap: 60px;
       margin-bottom: 80px;
       background-image: url('https://i.imgur.com/fJjhjpV.png');
-      background-size: cover; /* Ensures image covers the container */
+      background-size: cover; /* Ensure image covers the container */
       background-position: center;
       background-repeat: no-repeat;
       width: 100%;
-      height: 100%; /* Makes sure the background image fits the container */
-      position: relative; /* Ensures content inside can still be positioned over it */
-      padding: 20px; /* Added space around the container content */
+      min-height: 500px; /* Ensure the container has a minimum height */
+      position: relative;
+      padding: 20px;
     }
 
     .row {
@@ -56,7 +57,6 @@
       justify-content: space-between;
       overflow: hidden;
       position: relative;
-      z-index: 2;
     }
 
     .paper-tab {
@@ -69,7 +69,7 @@
       font-size: 18px;
       font-weight: bold;
       line-height: 55px;
-      z-index: 3; /* Ensure the paper tabs are above everything else */
+      z-index: 3; /* Paper tabs appear above the container */
     }
 
     .paper-tab a {
@@ -93,7 +93,7 @@
       font-weight: bold;
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      z-index: 2;
+      z-index: 2; /* Pockets appear above the background */
     }
   </style>
 </head>
