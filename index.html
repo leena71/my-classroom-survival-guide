@@ -33,6 +33,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      z-index: 1; /* Ensure this background stays behind */
     }
 
     .row {
@@ -51,6 +52,7 @@
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden; /* Prevent overflow */
+      position: relative; /* Make sure pockets are positioned correctly */
     }
 
     .paper-tab {
@@ -63,7 +65,7 @@
       font-size: 18px;
       font-weight: bold;
       line-height: 55px;
-      z-index: 2;
+      z-index: 2; /* Make sure the paper tab stays on top of the background */
     }
 
     .paper-tab a {
@@ -87,6 +89,7 @@
       font-weight: bold;
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      z-index: 3; /* Ensure this stays above the background */
     }
   </style>
 </head>
