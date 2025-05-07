@@ -1,71 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Classroom Survival Guide</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="https://unpkg.com/dialog-polyfill/dialog-polyfill.css" />
-    <style>
-      /* Your existing CSS styles */
-    </style>
-  </head>
-  <body>
-    <h1>A Classroom Survival Guide: An Educator's Archive</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cute Website</title>
+  <style>
+    /* Include the CSS from above here */
+  </style>
+</head>
+<body>
 
-    <div class="container">
-      <!-- Your content here -->
-    </div>
+  <h1>Welcome to My Cute Website!</h1>
 
-    <!-- Modal for Welcome -->
-    <dialog id="welcomeModal">
-      <p id="modalText">
-        Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for
-        Composition Theory & Pedagogy!
-      </p>
-      <button id="nextBtn">Start</button>
-    </dialog>
+  <button id="showModalBtn">Show Welcome Message</button>
 
-    <script src="https://unpkg.com/dialog-polyfill/dialog-polyfill.js"></script>
-    <script>
-      const dialog = document.querySelector('dialog');
-      if (!dialog.showModal) {
-        dialogPolyfill.registerDialog(dialog);
-      }
+  <dialog id="welcomeModal">
+    <p>Welcome to our site!</p>
+    <button id="closeModalBtn">Close</button>
+  </dialog>
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const welcomeModal = document.getElementById('welcomeModal');
-        welcomeModal.showModal();
+  <script>
+    const showModalBtn = document.getElementById('showModalBtn');
+    const welcomeModal = document.getElementById('welcomeModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
 
-        const nextBtn = document.getElementById('nextBtn');
-        const modalText = document.getElementById('modalText');
-        let clickCount = 0;
+    showModalBtn.addEventListener('click', () => {
+      welcomeModal.showModal();
+    });
 
-        nextBtn.addEventListener('click', () => {
-          clickCount++;
-          switch (clickCount) {
-            case 1:
-              modalText.textContent =
-                "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
-              nextBtn.textContent = 'Keep Going';
-              break;
-            case 2:
-              modalText.textContent = 'How exciting. Moving on!';
-              nextBtn.textContent = 'Almost There...';
-              break;
-            case 3:
-              modalText.textContent = "Here's how to navigate the website...";
-              nextBtn.textContent = "Let's Go!";
-              break;
-            default:
-              welcomeModal.close();
-              break;
-          }
-        });
-      });
-    </script>
-  </body>
+    closeModalBtn.addEventListener('click', () => {
+      welcomeModal.close();
+    });
+  </script>
+
+</body>
 </html>
