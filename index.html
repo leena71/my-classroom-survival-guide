@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #e3f2fd;
+      background-color: #e3f2fd; /* Keeping the base background color */
       margin: 0;
       padding: 0;
       font-family: 'Arapey', serif;
@@ -30,10 +30,13 @@
       gap: 60px;
       margin-bottom: 80px;
       background-image: url('https://i.imgur.com/fJjhjpV.png');
-      background-size: cover;
+      background-size: cover; /* Ensures image covers the container */
       background-position: center;
       background-repeat: no-repeat;
-      z-index: 1; /* Ensure this background stays behind */
+      width: 100%;
+      height: 100%; /* Makes sure the background image fits the container */
+      position: relative; /* Ensures content inside can still be positioned over it */
+      padding: 20px; /* Added space around the container content */
     }
 
     .row {
@@ -47,12 +50,13 @@
 
     .pocket-wrapper {
       width: 300px;
-      height: 230px; /* Set a fixed height for the wrapper */
+      height: 230px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden; /* Prevent overflow */
-      position: relative; /* Make sure pockets are positioned correctly */
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
     }
 
     .paper-tab {
@@ -65,7 +69,7 @@
       font-size: 18px;
       font-weight: bold;
       line-height: 55px;
-      z-index: 2; /* Make sure the paper tab stays on top of the background */
+      z-index: 3; /* Ensure the paper tabs are above everything else */
     }
 
     .paper-tab a {
@@ -78,18 +82,18 @@
 
     .pocket {
       width: 100%;
-      height: 150px; /* Reduced height of the pocket */
+      height: 150px;
       background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
       border: 4px solid #b39ddb;
       border-top: none;
       border-radius: 0 0 40px 40px;
       text-align: center;
-      padding-top: 45px; /* Adjusted to keep the text centered */
+      padding-top: 45px;
       font-size: 18px;
       font-weight: bold;
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      z-index: 3; /* Ensure this stays above the background */
+      z-index: 2;
     }
   </style>
 </head>
