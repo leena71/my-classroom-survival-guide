@@ -86,21 +86,7 @@
     }
 
     /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1050;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
+    dialog {
       background-color: #fbe9f1; /* Light pastel pink */
       border-radius: 15px;
       padding: 30px;
@@ -108,6 +94,7 @@
       max-width: 500px;
       text-align: center;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: none;
     }
 
     button {
@@ -170,45 +157,16 @@
   </div>
 
   <!-- Modal for Welcome -->
-  <div id="welcomeModal" class="modal">
-    <div class="modal-content">
-      <p id="modalText">Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!</p>
-      <button id="nextBtn">Start</button>
-    </div>
-  </div>
-
-  <button id="startBtn">Start</button>
+  <dialog id="welcomeModal">
+    <p id="modalText">Welcome to an educator's guide! Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!</p>
+    <button id="nextBtn">Start</button>
+  </dialog>
 
   <script>
-    const startBtn = document.getElementById('startBtn');
     const welcomeModal = document.getElementById('welcomeModal');
     const nextBtn = document.getElementById('nextBtn');
     const modalText = document.getElementById('modalText');
 
-    // Show the modal when the page loads
-    startBtn.addEventListener('click', () => {
-      welcomeModal.style.display = 'flex';
-      startBtn.style.display = 'none'; // Hide the Start button
-    });
-
-    // Step 1: Show first text
-    nextBtn.addEventListener('click', () => {
-      modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
-      nextBtn.innerHTML = "How exciting. Moving on!";
-      
-      // Step 2: Show second text
-      nextBtn.addEventListener('click', () => {
-        modalText.innerHTML = "How exciting. Moving on!";
-        nextBtn.innerHTML = "Proceed to Tutorial";
-
-        // Step 3: Show tutorial text
-        nextBtn.addEventListener('click', () => {
-          modalText.innerHTML = "Here's how to navigate the website...";
-          // Add tutorial content here
-        });
-      });
-    });
-  </script>
-
-</body>
-</html>
+    // Show the modal
+::contentReference[oaicite:20]{index=20}
+ 
