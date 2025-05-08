@@ -193,6 +193,112 @@
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
         <div class="pocket">Book List</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
+        <div class="pocket">Course Reflection</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
+        <div class="pocket">All Assignments / The End</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
+        <div class="pocket">Invention Project</div>
+      </div>
+    </div>
 
-::contentReference[oaicite:0]{index=0}
- 
+    <!-- BTS Playlist -->
+    <div class="music-player">
+      <h2>BTS Playlist</h2>
+      <ul class="playlist">
+        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
+      </ul>
+      <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
+    </div>
+
+    <!-- Quote Generator -->
+    <div class="quote-generator">
+      <p class="quote-text" id="quoteText">"The only way to do great work is to love what you do."</p>
+      <p class="quote-author" id="quoteAuthor">- Steve Jobs</p>
+      <button class="new-quote-btn" onclick="generateQuote()">Get a New Quote</button>
+    </div>
+  </div>
+
+  <!-- Modal for Welcome -->
+  <dialog id="welcomeModal">
+    <p id="modalText">Welcome to an educator's guide!</p>
+    <button id="nextBtn">Start</button>
+  </dialog>
+
+  <script>
+    const welcomeModal = document.getElementById('welcomeModal');
+    const nextBtn = document.getElementById('nextBtn');
+    const modalText = document.getElementById('modalText');
+
+    // Show the modal on page load
+    window.onload = () => {
+      welcomeModal.showModal();
+    };
+
+    // Step 1: Welcome message
+    nextBtn.onclick = () => {
+      modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
+      nextBtn.innerHTML = "Keep Going"; // Change button text
+      nextBtn.onclick = step2; // Set next function
+    };
+
+    // Step 2: "How exciting" message
+    function step2() {
+      modalText.innerHTML = "How exciting. Moving on!";
+      nextBtn.innerHTML = "Almost There..."; // Change button text
+      nextBtn.onclick = step3; // Set next function
+    }
+
+    // Step 3: Tutorial message
+    function step3() {
+      modalText.innerHTML = "Here's how to navigate the website...";
+      nextBtn.innerHTML = "Let's Go!"; // Change button text
+      nextBtn.onclick = closeModal; // Close modal on final step
+    }
+
+    // Close the modal
+    function closeModal() {
+      welcomeModal.close();
+    }
+
+    function playAudio(url) {
+      document.getElementById('audioIframe').src = url;
+      document.getElementById('audioIframe').style.visibility = 'visible'; // Make iframe visible
+    }
+
+    // Quote Generator Logic
+    const quotes = [
+      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+      { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+      { text: "It always seems impossible until it's done.", author: "Nelson Mandela" },
+      { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+      { text: "Your limitation—it’s only your imagination.", author: "Unknown" }
+    ];
+
+    function generateQuote() {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById('quoteText').textContent = `"${randomQuote.text}"`;
+      document.getElementById('quoteAuthor').textContent = `- ${randomQuote.author}`;
+    }
+  </script>
+</body>
+</html>
+
