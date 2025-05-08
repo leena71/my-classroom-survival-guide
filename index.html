@@ -85,16 +85,71 @@
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
-    /* Modal Styles */
-    dialog {
-      background-color: #fbe9f1; /* Light pastel pink */
-      border-radius: 15px;
-      padding: 30px;
-      width: 80%;
-      max-width: 500px;
+    /* BTS Quote Generator Styles */
+    .quote-wrapper {
+      width: 300px;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .quote-tab {
+      width: 100%;
+      height: 55px;
+      background: white;
+      border-radius: 12px 12px 0 0;
+      border: 1px solid #ccc;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      border: none;
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 55px;
+      z-index: 2;
+    }
+
+    .quote-tab a {
+      color: #4a148c;
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .quote-pocket {
+      width: 100%;
+      height: 170px;
+      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+      border: 4px solid #b39ddb;
+      border-top: none;
+      border-radius: 0 0 40px 40px;
+      text-align: center;
+      padding-top: 55px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #4a148c;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    #quoteDisplay {
+      font-size: 20px;
+      text-align: center;
+      margin-top: 20px;
+      transition: opacity 0.3s ease;
+    }
+
+    .quote-animate {
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
     }
 
     button {
@@ -111,47 +166,6 @@
     button:hover {
       background-color: #7b1fa2;
     }
-
-    /* Music Player Styles */
-    .music-player {
-      width: 100%;
-      max-width: 600px;
-      margin-top: 40px;
-      text-align: center;
-      padding: 20px;
-      background-color: transparent;
-      border: none;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      visibility: hidden; /* Hide iframe */
-    }
-
-    .playlist {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 40px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .playlist li {
-      background-color: #fff;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .playlist li:hover {
-      background-color: #f4a3d6;
-    }
-
   </style>
 </head>
 <body>
@@ -189,84 +203,6 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
-        <div class="pocket">Invention Project</div>
-      </div>
-    </div>
-
-    <!-- BTS Playlist -->
-    <div class="music-player">
-      <h2>BTS Playlist</h2>
-      <ul class="playlist">
-        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
-      </ul>
-      <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
-    </div>
-
-  </div>
-
-  <!-- Modal for Welcome -->
-  <dialog id="welcomeModal">
-    <p id="modalText">Welcome to an educator's guide!</p>
-    <button id="nextBtn">Start</button>
-  </dialog>
-
-  <script>
-    const welcomeModal = document.getElementById('welcomeModal');
-    const nextBtn = document.getElementById('nextBtn');
-    const modalText = document.getElementById('modalText');
-
-    // Show the modal on page load
-    window.onload = () => {
-      welcomeModal.showModal();
-    };
-
-    // Step 1: Welcome message
-    nextBtn.onclick = () => {
-      modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
-      nextBtn.innerHTML = "Keep Going"; // Change button text
-      nextBtn.onclick = step2; // Set next function
-    };
-
-    // Step 2: "How exciting" message
-    function step2() {
-      modalText.innerHTML = "How exciting. Moving on!";
-      nextBtn.innerHTML = "Almost There..."; // Change button text
-      nextBtn.onclick = step3; // Set next function
-    }
-
-    // Step 3: Tutorial message
-    function step3() {
-      modalText.innerHTML = "Here's how to navigate the website...";
-      nextBtn.innerHTML = "Let's Go!"; // Change button text
-      nextBtn.onclick = closeModal; // Close modal on final step
-    }
-
-    // Close the modal
-    function closeModal() {
-      welcomeModal.close();
-    }
-
-    function playAudio(url) {
-      // Change iframe source to the clicked song URL
-      document.getElementById('audioIframe').src = url;
-      document.getElementById('audioIframe').style.visibility = 'visible'; // Make iframe visible
-    }
-  </script>
-</body>
-</html>
-
-
-
+    <div class="
+::contentReference[oaicite:0]{index=0}
+ 
