@@ -90,13 +90,11 @@
       text-align: center;
       margin-top: 20px;
     }
-
     .quote-container p {
       font-size: 24px;
       font-weight: bold;
       color: #4a148c;
     }
-
     .quote-container button {
       padding: 12px 25px;
       font-size: 18px;
@@ -107,7 +105,6 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
-
     .quote-container button:hover {
       background-color: #7b1fa2;
     }
@@ -198,6 +195,14 @@
     .gif-wrapper img:hover {
       transform: scale(1.1);
     }
+
+    /* Additional layout for the GIFs on both sides */
+    .gif-row {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      gap: 20px;
+    }
   </style>
 </head>
 <body>
@@ -241,22 +246,20 @@
         <div class="pocket">Invention Project</div>
       </div>
 
-       <!-- Left-side GIFs (Three GIFs) -->
-      <div class="gif-left-wrapper">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn\:ANd9GcQ8Y53dH2MLbDbQg2UdyvleucJh-3XSkO9TQw&s" alt="Gif 1">
+      <!-- GIFs Section, Left Side -->
+      <div class="gif-wrapper">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Y53dH2MLbDbQg2UdyvleucJh-3XSkO9TQw&s" alt="Gif 1">
         <img src="https://media1.giphy.com/media/U17E0WQBnTrDtuGNrn/200w.gif?cid=6c09b9521lwvo3xyoxaujfgd8vve5pnr4xu5sih2a4aqid49&ep=v1_gifs_search&rid=200w.gif&ct=g" alt="Gif 2">
         <img src="https://pa1.aminoapps.com/6847/14394797f3c6bb10b6fd0d007e42de722bdf66d2_hq.gif" alt="Gif 3">
       </div>
 
-      <!-- Right-side GIFs (Three GIFs) -->
-      <div class="gif-right-wrapper">
-        <img src="https://i.pinimg.com/originals/ba/79/4c/ba794c3de23a9d038298c14382f65fd6.gif" alt="Gif 4">
-        <img src="https://media3.giphy.com/media/Ovi2PUCAFTJTZoHKyd/source.gif" alt="Gif 5">
-        <img src="https://64.media.tumblr.com/4d41794d1069fbd81b7e456b0e6d834a/1258a09550b47de0-9f/s400x600/398ec4fc18703f29e71816c881eb34a6c9641dd4.gif" alt="Gif 6">
+      <!-- GIFs Section, Right Side -->
+      <div class="gif-wrapper">
+        <img src="https://i.pinimg.com/originals/ba/79/4c/ba794c3de23a9d038298c14382f65fd6.gif" alt="Cute gif 1">
+        <img src="https://media3.giphy.com/media/Ovi2PUCAFTJTZoHKyd/source.gif" alt="Cute gif 2">
+        <img src="https://64.media.tumblr.com/4d41794d1069fbd81b7e456b0e6d834a/1258a09550b47de0-9f/s400x600/398ec4fc18703f29e71816c881eb34a6c9641dd4.gif" alt="Cute gif 3">
       </div>
     </div>
-  </div>
-
 
     <!-- BTS Playlist -->
     <div class="music-player">
@@ -282,6 +285,7 @@
       <p id="quoteDisplay">Click the button below to see a BTS quote.</p>
       <button onclick="generateQuote()">Show Quote</button>
     </div>
+
   </div>
 
   <!-- Modal for Welcome -->
@@ -347,4 +351,3 @@
 
 </body>
 </html>
-
