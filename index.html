@@ -340,6 +340,9 @@
   <div class="resizer"></div>
 </div>
 
+<!-- Hidden iframe for form submission -->
+<iframe id="responseIframe" name="responseIframe" style="display:none;"></iframe>
+
 <style>
   /* Draggable and Resizable Comment Box */
   #commentBox {
@@ -466,23 +469,31 @@
     const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScKzUjx0QRqFgWirFLPBzwpzbldxFaLIMuSlaVr6RXBkljW-A/formResponse';
     const entryId = 'entry.123456789'; // Replace with your actual entry ID
 
-    // Create a FormData object
-    const formData = new FormData();
-    formData.append(entryId, comment);
+    // Create a hidden form element
+    const form = document.createElement('form');
+    form.action = formUrl;
+    form.method = 'POST';
+    form.target = 'responseIframe';
 
-    // Send the data using fetch
-    fetch(formUrl, {
-      method: 'POST',
-      body: formData,
-      mode: 'no-cors' // Important for cross-origin requests
-    })
-    .then(() => {
-      alert('Thank you for your comment!');
-      document.getElementById('commentText').value = ''; // Clear the textarea
-    })
-    .catch(() => {
-      alert('There was an error submitting your comment. Please try again.');
-    });
+    // Create a hidden input field for the comment
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = entryId;
+    input.value = comment;
+    form.appendChild(input);
+
+    // Append the form to the document body
+    document.body.appendChild(form);
+
+    // Submit the form
+    form.submit();
+
+    // Remove the form from the document
+    document.body.removeChild(form);
+
+    // Clear the textarea
+    document.getElementById('commentText').value = '';
+    alert('Thank you for your comment!');
   }
 </script>
 
