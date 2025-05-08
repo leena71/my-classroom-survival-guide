@@ -287,14 +287,73 @@
       </div>
     </div>
 
-    <!-- Comment Box Section -->
+    <!-- Draggable Comment Box -->
     <div id="commentBox">
-      <header>Feedback</header>
-      <textarea name="comments" class="html-comment-box" placeholder="Share your thoughts here!"></textarea><br>
-      <input type="submit" value="Send" class="html-comment-box">
-      <input type="reset" value="Clear" class="html-comment-box">
+      <header>Leave Your Comment</header>
+      <textarea id="commentText" placeholder="Your feedback matters! Feel free to share your input :)"></textarea>
+      <button onclick="submitComment()">Submit Comment</button>
+      <div class="resizer"></div>
     </div>
 
+    <script>
+      // Draggable Comment Box
+      const commentBox = document.getElementById('commentBox');
+      let isDragging = false;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      commentBox.querySelector('header').addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - commentBox.offsetLeft;
+        offsetY = e.clientY - commentBox.offsetTop;
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          commentBox.style.left = `${e.clientX - offsetX}px`;
+          commentBox.style.top = `${e.clientY - offsetY}px`;
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      // Resizable Comment Box
+      const resizer = commentBox.querySelector('.resizer');
+      let isResizing = false;
+
+      resizer.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isResizing = true;
+        document.addEventListener('mousemove', resize);
+        document.addEventListener('mouseup', () => {
+          isResizing = false;
+          document.removeEventListener('mousemove', resize);
+        });
+      });
+
+      function resize(e) {
+        if (isResizing) {
+          const width = e.clientX - commentBox.offsetLeft;
+          const height = e.clientY - commentBox.offsetTop;
+          commentBox.style.width = `${width}px`;
+          commentBox.style.height = `${height}px`;
+        }
+      }
+
+      // Submit Comment
+      function submitComment() {
+        const commentText = document.getElementById('commentText').value;
+        if (commentText) {
+          alert('Thank you for your feedback!');
+          document.getElementById('commentText').value = ''; // Clear textarea
+        } else {
+          alert('Please write a comment before submitting.');
+        }
+      }
+    </script>
+  </div>
     <div class="gif-row">
       <!-- GIFs Left side above Invention Project pocket -->
       <div class="gif-wrapper">
