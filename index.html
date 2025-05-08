@@ -85,68 +85,24 @@
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
-    /* Character Styles */
-    .character-container {
-      width: 300px;
-      height: 300px;
-      margin: 30px auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 2px solid #b39ddb;
-      border-radius: 15px;
-      background-color: #f3e5f5;
-      position: relative;
-    }
-
-    .character {
-      width: 150px;
-      height: 150px;
-      background-image: url('https://via.placeholder.com/150'); /* Replace with your image URL */
-      background-size: cover;
-      background-position: center;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    /* Drag and Drop Area */
-    .drop-zone {
-      width: 80%;
-      height: 100px;
-      border: 2px dashed #b39ddb;
-      background-color: #e1bee7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #4a148c;
-      font-size: 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .drop-zone:hover {
-      background-color: #7b1fa2;
-      color: white;
-    }
-
-    .drop-zone p {
-      margin: 0;
-    }
-
     /* Quote Section */
     .quote-section {
       text-align: center;
       margin-top: 40px;
+      padding: 20px;
+      background-color: #f3e5f5;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .quote-section button {
       background-color: #4a148c;
       color: white;
-      padding: 12px 25px;
+      padding: 18px 40px;
       border: none;
-      font-size: 18px;
+      font-size: 24px;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 12px;
       transition: background-color 0.3s;
     }
 
@@ -155,11 +111,12 @@
     }
 
     .quote-display {
-      font-size: 20px;
+      font-size: 24px;
       font-weight: bold;
       color: #4a148c;
       margin-top: 20px;
     }
+
   </style>
 </head>
 <body>
@@ -167,80 +124,15 @@
   <h1>A Classroom Survival Guide: An Educator's Archive</h1>
 
   <div class="container">
-    <div class="row">
-      <!-- Drag and Drop Zone -->
-      <div class="drop-zone" id="dropZone">
-        <p>Drag and Drop your PDFs here!</p>
-      </div>
-
-      <!-- Character that reacts to drag and drop -->
-      <div class="character-container">
-        <div id="character" class="character"></div>
-      </div>
+    <!-- Quote Section -->
+    <div class="quote-section">
+      <button id="generateQuoteBtn">Words to Remember</button>
+      <div id="quoteDisplay" class="quote-display">Your motivational quote will appear here!</div>
     </div>
-
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
-        <div class="pocket">Teaching Textbook</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
-        <div class="pocket">Unit Lesson Plan</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
-        <div class="pocket">Teaching Philosophy</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Quote Section -->
-  <div class="quote-section">
-    <button id="generateQuoteBtn">Generate Quote</button>
-    <div id="quoteDisplay" class="quote-display">Your motivational quote will appear here!</div>
   </div>
 
   <script>
-    // Drag-and-drop functionality
-    const dropZone = document.getElementById('dropZone');
-    const character = document.getElementById('character');
-
-    // Prevent default behavior for dragover and drop events
-    dropZone.addEventListener('dragover', (event) => {
-      event.preventDefault();
-      dropZone.style.backgroundColor = '#7b1fa2'; // Change drop zone color on hover
-    });
-
-    dropZone.addEventListener('dragleave', () => {
-      dropZone.style.backgroundColor = '#e1bee7'; // Reset color when drag leaves
-    });
-
-    dropZone.addEventListener('drop', (event) => {
-      event.preventDefault();
-      dropZone.style.backgroundColor = '#7b1fa2'; // Change color on drop
-
-      // Check if dropped item is a file
-      const files = event.dataTransfer.files;
-      if (files.length > 0) {
-        const file = files[0];
-
-        // Check if the file is a PDF
-        if (file.type === 'application/pdf') {
-          alert("You fed the character a PDF: " + file.name);
-          
-          // Add animation to the character as if it's being fed the PDF
-          character.style.transform = "scale(1.2)"; // Character grows
-          setTimeout(() => {
-            character.style.transform = "scale(1)"; // Character returns to normal size
-          }, 500);
-        } else {
-          alert("Please drag a PDF file!");
-        }
-      }
-    });
-
-    // Quote Generator
+    // Quote Generator functionality
     const quotes = [
       "The best way to predict the future is to create it. – Peter Drucker",
       "Teaching is the one profession that creates all other professions.",
@@ -257,4 +149,3 @@
 
 </body>
 </html>
-
