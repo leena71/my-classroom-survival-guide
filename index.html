@@ -97,9 +97,7 @@
     }
 
     iframe {
-      display: block; /* Allow iframe to display when song is clicked */
       width: 100%;
-      max-width: 600px;
       height: 315px;
       border-radius: 12px;
       margin-top: 20px;
@@ -176,17 +174,17 @@
     <div class="music-player">
       <h2>BTS Playlist</h2>
       <ul class="playlist">
-        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg?autoplay=1')">Dynamite</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI?autoplay=1')">Permission to Dance</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ?autoplay=1')">Yet To Come</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE?autoplay=1')">Love Myself</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI?autoplay=1')">Magic Shop</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8?autoplay=1')">Spring Day</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ?autoplay=1')">Black Swan</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI?autoplay=1')">Save Me</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U?autoplay=1')">Young Forever</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU?autoplay=1')">For Youth</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc?autoplay=1')">00:00</li>
       </ul>
 
       <!-- Embedded iframe -->
@@ -227,15 +225,19 @@
 
     // Step 3: Tutorial message
     function step3() {
-      modalText.innerHTML = "Let’s dive into the resources below!";
-      nextBtn.innerHTML = "Let's Go"; // Change button text
-      nextBtn.onclick = () => welcomeModal.close(); // Close modal
+      modalText.innerHTML = "Here's how to navigate the website...";
+      nextBtn.innerHTML = "Let's Go!"; // Change button text
+      nextBtn.onclick = closeModal; // Close modal on final step
     }
 
-    // Play audio function to change iframe src based on clicked song
+    // Close the modal
+    function closeModal() {
+      welcomeModal.close();
+    }
+
     function playAudio(url) {
       const iframe = document.getElementById('audioIframe');
-      iframe.src = url; // Change iframe src to the YouTube video
+      iframe.src = url; // Update iframe src with the new YouTube video link
     }
   </script>
 
