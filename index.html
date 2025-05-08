@@ -203,6 +203,28 @@
       width: 100%;
       gap: 20px;
     }
+
+    /* Comment Box Styles */
+    textarea.html-comment-box {
+      background-color: #CCFFCC;
+      background-image: url(http://);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      border-width: 1px;
+      border-style: dotted;
+      border-color: #FFFFCC;
+      font-family: Cursive;
+      font-size: 12pt;
+      color: #000000;
+    }
+
+    input.html-comment-box {
+      background-color: #330033;
+      font-family: Cursive;
+      font-size: 12pt;
+      color: #FFFFFF;
+    }
+
   </style>
 </head>
 <body>
@@ -246,108 +268,24 @@
         <div class="pocket">Invention Project</div>
       </div>
 
-      <!-- GIFs Section, Left Side -->
+      <!-- Comment Box Section -->
+      <div>
+        <form method="post">
+          <textarea name="comments" cols="50" rows="10" class="html-comment-box">Your feedback matters! Feel free to share your input :)</textarea><br>
+          <input type="submit" value="Into the void" class="html-comment-box">
+          <input type="reset" value="Back to square one." class="html-comment-box">
+        </form>
+      </div>
+
+      <!-- GIFs Section -->
       <div class="gif-wrapper">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Y53dH2MLbDbQg2UdyvleucJh-3XSkO9TQw&s" alt="Gif 1">
         <img src="https://media1.giphy.com/media/U17E0WQBnTrDtuGNrn/200w.gif?cid=6c09b9521lwvo3xyoxaujfgd8vve5pnr4xu5sih2a4aqid49&ep=v1_gifs_search&rid=200w.gif&ct=g" alt="Gif 2">
         <img src="https://pa1.aminoapps.com/6847/14394797f3c6bb10b6fd0d007e42de722bdf66d2_hq.gif" alt="Gif 3">
       </div>
-
-      <!-- GIFs Section, Right Side -->
-      <div class="gif-wrapper">
-        <img src="https://i.pinimg.com/originals/ba/79/4c/ba794c3de23a9d038298c14382f65fd6.gif" alt="Cute gif 1">
-        <img src="https://media3.giphy.com/media/Ovi2PUCAFTJTZoHKyd/source.gif" alt="Cute gif 2">
-        <img src="https://64.media.tumblr.com/4d41794d1069fbd81b7e456b0e6d834a/1258a09550b47de0-9f/s400x600/398ec4fc18703f29e71816c881eb34a6c9641dd4.gif" alt="Cute gif 3">
-      </div>
-    </div>
-
-    <!-- BTS Playlist -->
-    <div class="music-player">
-      <h2>BTS Playlist</h2>
-      <ul class="playlist">
-        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
-      </ul>
-      <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
-    </div>
-
-    <!-- BTS Quote Generator -->
-    <div class="quote-container">
-      <p id="quoteDisplay">Click the button below to see a BTS quote.</p>
-      <button onclick="generateQuote()">Show Quote</button>
     </div>
 
   </div>
-
-  <!-- Modal for Welcome -->
-  <dialog id="welcomeModal">
-    <p id="modalText">Welcome to an educator's guide!</p>
-    <button id="nextBtn">Start</button>
-  </dialog>
-
-  <script>
-    const quotes = [
-      "Don’t be afraid, don’t worry yourself.",
-      "Effort makes you. You will regret someday if you don’t do your best now.",
-      "Love myself, love yourself, peace.",
-      "You were born to be real, not perfect.",
-      "Where there is hope, there is always hardship."
-    ];
-
-    function generateQuote() {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
-    }
-
-    const welcomeModal = document.getElementById('welcomeModal');
-    const nextBtn = document.getElementById('nextBtn');
-    const modalText = document.getElementById('modalText');
-
-    // Show the modal on page load
-    window.onload = () => {
-      welcomeModal.showModal();
-    };
-
-    // Step 1: Welcome message
-    nextBtn.onclick = () => {
-      modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
-      nextBtn.innerHTML = "Keep Going"; // Change button text
-      nextBtn.onclick = step2; // Set next function
-    };
-
-    // Step 2: "How exciting" message
-    function step2() {
-      modalText.innerHTML = "How exciting. Moving on!";
-      nextBtn.innerHTML = "Almost There..."; // Change button text
-      nextBtn.onclick = step3; // Set next function
-    }
-
-    // Step 3: Tutorial message
-    function step3() {
-      modalText.innerHTML = "Here's how to navigate the website...";
-      nextBtn.innerHTML = "Let's Go!"; // Change button text
-      nextBtn.onclick = closeModal; // Close modal on final step
-    }
-
-    // Close the modal
-    function closeModal() {
-      welcomeModal.close();
-    }
-
-    function playAudio(url) {
-      document.getElementById('audioIframe').src = url;
-      document.getElementById('audioIframe').style.visibility = 'visible'; // Make iframe visible
-    }
-  </script>
 
 </body>
 </html>
