@@ -240,8 +240,9 @@
       </div>
     </div>
 
-  <!-- HTML Codes by Code-Generator.net -->
+ <!-- HTML Codes by Code-Generator.net -->
 <style type="text/css">
+  /* Comment box styling */
   textarea.html-comment-box {
     background-color: #FFFFCC;
     background-image: none; /* Removed the empty URL */
@@ -255,9 +256,13 @@
     color: #000000;
     padding: 10px;
     box-sizing: border-box;
-    resize: vertical; /* Allow vertical resizing */
+    resize: both; /* Allow both vertical and horizontal resizing */
+    overflow: auto; /* Allows scrollbars if content overflows */
+    min-width: 300px; /* Minimum width */
+    min-height: 150px; /* Minimum height */
   }
 
+  /* Submit button styling */
   input.html-comment-box {
     background-color: #330033;
     font-family: Times, serif; /* Added a fallback font */
@@ -275,7 +280,7 @@
     background-color: #4a148c; /* Slight hover effect */
   }
 
-  /* Style the Reset Button */
+  /* Reset button styling */
   input[type="reset"].html-comment-box {
     background-color: #555;
     margin-top: 10px;
@@ -313,6 +318,7 @@ Your feedback matters! Feel free to share your input :)
     <input type="reset" value="Back to square one." class="html-comment-box">
   </form>
 </div>
+
 
 
       <!-- GIFs Section, Left Side -->
