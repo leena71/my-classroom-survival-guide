@@ -263,13 +263,19 @@
     <ul class="playlist">
       <li onclick="playAudio('https://www.youtube.com/embed/dQw4w9WgXcQ')">Life Goes On</li>
       <li onclick="playAudio('https://www.youtube.com/embed/69t0g3fFkPI')">Dynamite</li>
-      <li onclick="playAudio('https://www.youtube.com/embed/Jj6rOlq6__Y')">Butter</li>
+      <li onclick="playAudio('https://www.youtube.com/embed/Jd7n4ZcMn7E')">Butter</li>
       <li onclick="playAudio('https://www.youtube.com/embed/k2cYWfq--Nw')">Permission to Dance</li>
       <li onclick="playAudio('https://www.youtube.com/embed/6Jmlvl4Z66A')">Boy with Luv</li>
     </ul>
   </div>
 
   <script>
+    // Welcome Button Interaction
+    const welcomeBtn = document.querySelector('.welcome-btn');
+    welcomeBtn.addEventListener('click', () => {
+      alert('Welcome to the Classroom Survival Guide!');
+    });
+
     // Quote Generator
     const quotes = [
       "The secret of getting ahead is getting started.",
