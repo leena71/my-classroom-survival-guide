@@ -165,6 +165,46 @@
       margin-top: 20px;
     }
 
+    /* Music Player Styles */
+    .music-player {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px;
+      background-color: transparent;
+      border: none;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      visibility: hidden; /* Hide iframe */
+    }
+
+    .playlist {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 40px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .playlist li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .playlist li:hover {
+      background-color: #f4a3d6;
+    }
+
   </style>
 </head>
 <body>
@@ -207,6 +247,7 @@
         <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
         <div class="pocket">Invention Project</div>
       </div>
+
       <!-- Character and Drop Zone -->
       <div class="character-container">
         <div class="drop-zone" id="dropZone">
@@ -219,53 +260,72 @@
 
   <!-- Quote Section -->
   <div class="quote-section">
-    <button id="generateQuoteBtn">Generate Quote</button>
+    <button id="generateQuoteBtn">Words to Remember</button>
     <div id="quoteDisplay" class="quote-display">Your motivational quote will appear here!</div>
   </div>
 
+  <!-- BTS Playlist -->
+  <div class="music-player">
+    <h2>BTS Playlist</h2>
+    <ul class="playlist">
+      <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
+      <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
+      <li onclick="playAudio('https://www.youtube.com/embed/dQw4w9WgXcQ')">Life Goes On</li>
+    </ul>
+  </div>
+
   <script>
-    // Drag-and-drop functionality
-    const dropZone = document.getElementById('dropZone');
-    const character = document.getElementById('character');
+    // Quote Generator
+    const quotes = [
+      "The secret of getting ahead is getting started.",
+      "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+      "Believe you can and you're halfway there.",
+      "Success usually comes to those who are too busy to be looking for it.",
+      "Don’t watch the clock; do what it does. Keep going."
+    ];
 
-    // Prevent default behavior for dragover and drop events
-    dropZone.addEventListener('dragover', (event) => {
-      event.preventDefault();
-      dropZone.style.backgroundColor = '#7b1fa2'; // Change drop zone color on hover
+    const quoteBtn = document.getElementById("generateQuoteBtn");
+    const quoteDisplay = document.getElementById("quoteDisplay");
+
+    quoteBtn.addEventListener("click", () => {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      quoteDisplay.textContent = randomQuote;
     });
 
-    dropZone.addEventListener('dragleave', () => {
-      dropZone.style.backgroundColor = '#e1bee7'; // Reset color when drag leaves
+    // Drag and Drop Functionality
+    const dropZone = document.getElementById("dropZone");
+    const character = document.getElementById("character");
+
+    dropZone.addEventListener("dragover", (event) => {
+      event.preventDefault();
     });
 
-    dropZone.addEventListener('drop', (event) => {
+    dropZone.addEventListener("drop", (event) => {
       event.preventDefault();
-      dropZone.style.backgroundColor = '#7b1fa2'; // Change color on drop
-
-      // Check if dropped item is a file
-      const files = event.dataTransfer.files;
-      if (files.length > 0) {
-        const file = files[0];
-
-        // Check if the file is a PDF
-        if (file.type === 'application/pdf') {
-          alert("You fed the character a PDF: " + file.name);
-          
-          // Add animation to the character as if it's being fed the PDF
-          character.style.transform = "scale(1.2)"; // Character grows
-          setTimeout(() => {
-            character.style.transform = "scale(1)"; // Character returns to normal size
-          }, 500);
-        } else {
-          alert("Please drag a PDF file!");
-        }
+      const file = event.dataTransfer.files[0];
+      if (file && file.type === "application/pdf") {
+        character.style.transform = "scale(1.2)";
+        setTimeout(() => {
+          character.style.transform = "scale(1)";
+        }, 1000);
+        alert("PDF file dropped: " + file.name);
+      } else {
+        alert("Please drop a valid PDF file.");
       }
     });
 
-    // Quote Generator
-    const quotes = [
-      "The best way to predict the future is to create it. – Peter Drucker",
-      "Teaching is the one profession that creates all other professions.",
-      "An investment in knowledge pays the best interest. – Benjamin Franklin",
-      "Education is the most powerful weapon which you can use to change the world. – Nelson Mandela",
-      "What we learn with pleasure we never forget.
+    // Play Audio for BTS Playlist
+    function playAudio(url) {
+      const iframe = document.createElement("iframe");
+      iframe.src = url;
+      iframe.style.visibility = "visible";
+      iframe.style.width = "100%";
+      iframe.style.height = "100%";
+      document.querySelector('.music-player').appendChild(iframe);
+    }
+  </script>
+
+</body>
+</html>
+
+
