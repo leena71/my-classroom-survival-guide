@@ -255,4 +255,67 @@
           <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
           <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
           <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
-          <li onclick="playAudio('https://www.youtube
+          <li onclick="playAudio('https://www.youtube.com/embed/t4sSf71w2ZY')">Boy With Luv</li>
+        </ul>
+        <iframe id="audio-player" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <!-- Quote Generator -->
+      <div class="quote-container">
+        <p>Click below for a motivational quote!</p>
+        <button onclick="generateQuote()">Generate Quote</button>
+        <p id="quote-text"></p>
+      </div>
+
+      <!-- Modal Button -->
+      <div>
+        <button onclick="openDialog()">Show Hidden Tip</button>
+      </div>
+
+      <dialog id="hiddenTip">
+        <h2>Here's a secret tip for surviving the semester!</h2>
+        <p>Stay organized, stay motivated, and always take time for yourself!</p>
+        <button onclick="closeDialog()">Close</button>
+      </dialog>
+    </div>
+
+    <div class="chibi-section">
+      <!-- Chibi BTS Image -->
+      <div class="chibi-image-wrapper">
+        <img src="https://i.postimg.cc/MnSkmgWz" alt="Chibi BTS">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Generate a random quote
+    function generateQuote() {
+      const quotes = [
+        "You are braver than you believe, stronger than you seem, and smarter than you think.",
+        "Education is the most powerful weapon which you can use to change the world.",
+        "The future belongs to those who believe in the beauty of their dreams.",
+        "Success is the sum of small efforts, repeated day in and day out.",
+        "Believe you can and you're halfway there."
+      ];
+
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById("quote-text").textContent = randomQuote;
+    }
+
+    // Modal functionality
+    function openDialog() {
+      document.getElementById("hiddenTip").showModal();
+    }
+
+    function closeDialog() {
+      document.getElementById("hiddenTip").close();
+    }
+
+    // Play YouTube audio
+    function playAudio(url) {
+      document.getElementById('audio-player').src = url;
+    }
+  </script>
+
+</body>
+</html>
