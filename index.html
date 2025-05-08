@@ -6,6 +6,7 @@
   <title>Classroom Survival Guide</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
+    /* Global body styles */
     body {
       background-color: #e3f2fd;
       margin: 0;
@@ -88,7 +89,7 @@
     /* Comment box styles */
     #commentBox {
       position: absolute;
-      top: 85%; /* Position it below the BTS playlist */
+      top: 85%;
       left: 50%;
       transform: translateX(-50%);
       width: 300px;
@@ -115,7 +116,7 @@
       color: #000000;
       padding: 10px;
       box-sizing: border-box;
-      resize: none; /* Disable default textarea resizing */
+      resize: none;
     }
 
     input.html-comment-box {
@@ -144,28 +145,18 @@
       background-color: #777;
     }
 
-    form {
-      text-align: center;
-      margin: 20px;
-    }
-
-    .form-container {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Additional styles for the page */
+    /* Quote generator container */
     .quote-container {
       text-align: center;
       margin-top: 20px;
     }
+
     .quote-container p {
       font-size: 24px;
       font-weight: bold;
       color: #4a148c;
     }
+
     .quote-container button {
       padding: 12px 25px;
       font-size: 18px;
@@ -176,9 +167,44 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
+
     .quote-container button:hover {
       background-color: #7b1fa2;
     }
+
+    /* Music player container */
+    .music-player {
+      text-align: center;
+    }
+
+    .playlist {
+      list-style: none;
+      padding: 0;
+      font-size: 18px;
+      color: #4a148c;
+    }
+
+    .playlist li {
+      cursor: pointer;
+      margin: 10px 0;
+      padding: 8px;
+      background-color: #f1f1f1;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    .playlist li:hover {
+      background-color: #d1c4e9;
+    }
+
+    iframe {
+      margin-top: 20px;
+      width: 100%;
+      height: 300px;
+      border: none;
+      visibility: hidden;
+    }
+
   </style>
 </head>
 <body>
@@ -206,7 +232,7 @@
     </div>
 
     <!-- Comment Box -->
-    <div id="commentBox" class="form-container">
+    <div id="commentBox">
       <div id="dragHeader" class="drag-header">Click here to move</div>
       <form method="post">
         <textarea name="comments" cols="50" rows="10" class="html-comment-box" placeholder="Your feedback matters! Feel free to share your input :)"></textarea><br>
@@ -223,7 +249,7 @@
   </div>
 
   <script>
-    // Draggable functionality
+    // Draggable functionality for comment box
     let dragHeader = document.getElementById("dragHeader");
     let commentBox = document.getElementById("commentBox");
 
@@ -232,8 +258,8 @@
 
     dragHeader.addEventListener('mousedown', (e) => {
       isDragging = true;
-      offsetX = e.clientX - commentBox.getBoundingClientRect().left;
-      offsetY = e.clientY - commentBox.getBoundingClientRect().top;
+      offsetX = e.clientX - commentBox.offsetLeft;
+      offsetY = e.clientY - commentBox.offsetTop;
     });
 
     document.addEventListener('mousemove', (e) => {
