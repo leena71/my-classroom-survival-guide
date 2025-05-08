@@ -12,7 +12,6 @@
       padding: 0;
       font-family: 'Arapey', serif;
     }
-
     h1 {
       text-align: center;
       font-size: 42px;
@@ -22,7 +21,6 @@
       margin-top: 60px;
       margin-bottom: 80px;
     }
-
     .container {
       display: flex;
       flex-direction: column;
@@ -30,7 +28,6 @@
       gap: 60px;
       margin-bottom: 80px;
     }
-
     .row {
       display: flex;
       justify-content: center;
@@ -39,7 +36,6 @@
       width: 100%;
       max-width: 1300px;
     }
-
     .pocket-wrapper {
       width: 300px;
       height: 250px;
@@ -48,7 +44,6 @@
       justify-content: space-between;
       overflow: hidden;
     }
-
     .paper-tab {
       width: 100%;
       height: 55px;
@@ -61,7 +56,6 @@
       line-height: 55px;
       z-index: 2;
     }
-
     .paper-tab a {
       color: #4a148c;
       text-decoration: none;
@@ -69,7 +63,6 @@
       width: 100%;
       height: 100%;
     }
-
     .pocket {
       width: 100%;
       height: 170px;
@@ -84,22 +77,18 @@
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
-
-    /* BTS Quote Generator Styles */
-    .quote-wrapper {
-      width: 300px;
-      height: 250px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
-      border: 4px solid #b39ddb;
-      border-radius: 0 0 40px 40px;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    /* Modal Styles */
+    dialog {
+      background-color: #fbe9f1;
+      border-radius: 15px;
+      padding: 30px;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: none;
     }
-
-    .quote-button {
+    button {
       background-color: #4a148c;
       color: white;
       border: none;
@@ -108,36 +97,83 @@
       cursor: pointer;
       border-radius: 8px;
       transition: background-color 0.3s;
-      margin-bottom: 20px;
     }
-
-    .quote-button:hover {
+    button:hover {
       background-color: #7b1fa2;
     }
-
-    .quote-display {
-      font-size: 18px;
+    /* Music Player Styles */
+    .music-player {
+      width: 100%;
+      max-width: 600px;
+      margin-top: 40px;
       text-align: center;
-      color: #4a148c;
-      font-weight: bold;
-      opacity: 0;
-      animation: fadeIn 0.5s forwards;
+      padding: 20px;
+      background-color: transparent;
+      border: none;
     }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      visibility: hidden;
+    }
+    .playlist {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 40px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .playlist li {
+      background-color: #fff;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .playlist li:hover {
+      background-color: #f4a3d6;
+    }
+    /* Quote Generator Styles */
+    .quote-generator {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+    .quote-text {
+      font-size: 24px;
+      font-style: italic;
+      color: #333;
+    }
+    .quote-author {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #4a148c;
+    }
+    .new-quote-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #4a148c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .new-quote-btn:hover {
+      background-color: #7b1fa2;
     }
   </style>
 </head>
 <body>
-
   <h1>A Classroom Survival Guide: An Educator's Archive</h1>
-
   <div class="container">
     <div class="row">
       <div class="pocket-wrapper">
@@ -153,43 +189,11 @@
         <div class="pocket">Teaching Philosophy</div>
       </div>
     </div>
-
     <div class="row">
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
         <div class="pocket">Book List</div>
       </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
-        <div class="pocket">Course Reflection</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
-        <div class="pocket">All Assignments / The End</div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
-        <div class="pocket">Invention Project</div>
-      </div>
-
-      <!-- BTS Quote Generator Pocket -->
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="javascript:void(0)" onclick="newQuote()">Words to Remember</a></div>
-        <div class="quote-wrapper">
-          <button class="quote-button" onclick="newQuote()">Words to Remember</button>
-          <p id="quoteDisplay" class="quote-display">"Love myself, love yourself, peace."</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const quotes = [
-      "Don't be afraid, don't worry yourself.",
-
+      <div class="
 ::contentReference[oaicite:0]{index=0}
  
-
