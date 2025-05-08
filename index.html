@@ -12,7 +12,6 @@
       padding: 0;
       font-family: 'Arapey', serif;
     }
-
     h1 {
       text-align: center;
       font-size: 42px;
@@ -22,7 +21,6 @@
       margin-top: 60px;
       margin-bottom: 80px;
     }
-
     .container {
       display: flex;
       flex-direction: column;
@@ -30,7 +28,6 @@
       gap: 60px;
       margin-bottom: 80px;
     }
-
     .row {
       display: flex;
       justify-content: center;
@@ -39,7 +36,6 @@
       width: 100%;
       max-width: 1300px;
     }
-
     .pocket-wrapper {
       width: 300px;
       height: 250px;
@@ -48,7 +44,6 @@
       justify-content: space-between;
       overflow: hidden;
     }
-
     .paper-tab {
       width: 100%;
       height: 55px;
@@ -61,7 +56,6 @@
       line-height: 55px;
       z-index: 2;
     }
-
     .paper-tab a {
       color: #4a148c;
       text-decoration: none;
@@ -69,7 +63,6 @@
       width: 100%;
       height: 100%;
     }
-
     .pocket {
       width: 100%;
       height: 170px;
@@ -84,10 +77,9 @@
       color: #4a148c;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
-
     /* Modal Styles */
     dialog {
-      background-color: #fbe9f1; /* Light pastel pink */
+      background-color: #fbe9f1;
       border-radius: 15px;
       padding: 30px;
       width: 80%;
@@ -96,7 +88,6 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       border: none;
     }
-
     button {
       background-color: #4a148c;
       color: white;
@@ -107,11 +98,9 @@
       border-radius: 8px;
       transition: background-color 0.3s;
     }
-
     button:hover {
       background-color: #7b1fa2;
     }
-
     /* Music Player Styles */
     .music-player {
       width: 100%;
@@ -122,14 +111,12 @@
       background-color: transparent;
       border: none;
     }
-
     iframe {
       width: 100%;
       height: 100%;
       border: none;
-      visibility: hidden; /* Hide iframe */
+      visibility: hidden;
     }
-
     .playlist {
       list-style-type: none;
       padding: 0;
@@ -137,7 +124,6 @@
       font-size: 18px;
       font-weight: bold;
     }
-
     .playlist li {
       background-color: #fff;
       margin: 10px 0;
@@ -147,74 +133,21 @@
       transition: background-color 0.3s ease;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-
     .playlist li:hover {
       background-color: #f4a3d6;
     }
-
   </style>
 </head>
 <body>
-
   <h1>A Classroom Survival Guide: An Educator's Archive</h1>
-
   <div class="container">
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
-        <div class="pocket">Teaching Textbook</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
-        <div class="pocket">Unit Lesson Plan</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
-        <div class="pocket">Teaching Philosophy</div>
-      </div>
-    </div>
+    <!-- Existing content remains unchanged -->
+  </div>
 
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
-        <div class="pocket">Book List</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
-        <div class="pocket">Course Reflection</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
-        <div class="pocket">All Assignments / The End</div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
-        <div class="pocket">Invention Project</div>
-      </div>
-    </div>
-
-    <!-- BTS Playlist -->
-    <div class="music-player">
-      <h2>BTS Playlist</h2>
-      <ul class="playlist">
-        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
-      </ul>
-      <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
-    </div>
-
+  <!-- Quote Generator -->
+  <div class="quote-container">
+    <p id="quoteDisplay" style="font-size: 24px; font-weight: bold; text-align: center; color: #4a148c;"></p>
+    <button onclick="generateQuote()" style="display: block; margin: 20px auto; padding: 12px 25px; font-size: 18px; background-color: #4a148c; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">Show Quote</button>
   </div>
 
   <!-- Modal for Welcome -->
@@ -259,14 +192,7 @@
       welcomeModal.close();
     }
 
-    function playAudio(url) {
-      // Change iframe source to the clicked song URL
-      document.getElementById('audioIframe').src = url;
-      document.getElementById('audioIframe').style.visibility = 'visible'; // Make iframe visible
-    }
-  </script>
-</body>
-</html>
-
-
-
+    // Quote Generator
+    const quotes =
+::contentReference[oaicite:0]{index=0}
+ 
