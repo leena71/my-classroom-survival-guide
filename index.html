@@ -203,6 +203,59 @@
       width: 100%;
       gap: 20px;
     }
+
+    /* Comment Box Styles */
+    .form-container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    textarea.html-comment-box {
+      background-color: #FFFFCC;
+      border-width: 3px;
+      border-style: dotted;
+      border-color: #FFFFCC;
+      font-family: Times, serif;
+      font-size: 12pt;
+      color: #000000;
+      padding: 10px;
+      box-sizing: border-box;
+      resize: vertical;
+      margin-bottom: 10px;
+    }
+
+    input.html-comment-box {
+      background-color: #330033;
+      font-family: Times, serif;
+      font-size: 12pt;
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    input.html-comment-box:hover {
+      background-color: #4a148c;
+    }
+
+    input[type="reset"].html-comment-box {
+      background-color: #555;
+      margin-top: 10px;
+    }
+
+    input[type="reset"].html-comment-box:hover {
+      background-color: #777;
+    }
+
+    form {
+      text-align: center;
+      margin: 20px;
+    }
   </style>
 </head>
 <body>
@@ -240,96 +293,23 @@
       </div>
     </div>
 
-    <!-- Draggable Comment Box -->
-    <div id="commentBox">
-      <header>Leave Your Comment</header>
-      <textarea id="commentText" placeholder="Your feedback matters! Feel free to share your input :)"></textarea>
-      <button onclick="submitComment()">Submit Comment</button>
-      <div class="resizer"></div>
+    <!-- Comment Box Section -->
+    <div class="form-container">
+      <form method="post">
+        <textarea name="comments" cols="50" rows="10" class="html-comment-box">Your feedback matters! Feel free to share your input :)</textarea><br>
+        <input type="submit" value="Into the void" class="html-comment-box">
+        <input type="reset" value="Back to square one." class="html-comment-box">
+      </form>
     </div>
 
-    <!-- Modal for Welcome -->
-    <dialog id="welcomeModal">
-      <p id="modalText">Welcome to an educator's guide!</p>
-      <button id="nextBtn">Start</button>
-    </dialog>
+    <!-- GIFs Section, Left Side -->
+    <div class="gif-wrapper">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Y53dH2MLbDbQg2UdyvleucJh-3XSkO9TQw&s" alt="Gif 1">
+      <img src="https://media1.giphy.com/media/U17E0WQBnTrDtuGNrn/200w.gif?cid=6c09b9521lwvo3xyoxaujfgd8vve5pnr4xu5sih2a4aqid49&ep=v1_gifs_search&rid=200w.gif&ct=g" alt="Gif 2">
+      <img src="https://pa1.aminoapps.com/6847/14394797f3c6bb10b6fd0d007e42de722bdf66d2_hq.gif" alt="Gif 3">
+    </div>
 
-  </div>
-
-  <script>
-    // Draggable Comment Box
-    const commentBox = document.getElementById('commentBox');
-    let isDragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
-
-    commentBox.querySelector('header').addEventListener('mousedown', (e) => {
-      isDragging = true;
-      offsetX = e.clientX - commentBox.offsetLeft;
-      offsetY = e.clientY - commentBox.offsetTop;
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (isDragging) {
-        commentBox.style.left = `${e.clientX - offsetX}px`;
-        commentBox.style.top = `${e.clientY - offsetY}px`;
-      }
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-    });
-
-    // Resizable Comment Box
-    const resizer = commentBox.querySelector('.resizer');
-    let isResizing = false;
-
-    resizer.addEventListener('mousedown', (e) => {
-      isResizing = true;
-      document.addEventListener('mousemove', resize);
-      document.addEventListener('mouseup', () => {
-        isResizing = false;
-        document.removeEventListener('mousemove', resize);
-      });
-    });
-
-    function resize(e) {
-      if (isResizing) {
-        const width = e.clientX - commentBox.offsetLeft;
-        const height = e.clientY - commentBox.offsetTop;
-        commentBox.style.width = `${width}px`;
-        commentBox.style.height = `${height}px`;
-      }
-    }
-
-    // Handle Comment Submission (e.g., log or process)
-    function submitComment() {
-      const comment = document.getElementById('commentText').value;
-      console.log('Comment Submitted:', comment);  // Replace with your actual submission logic
-    }
-
-    // Modal logic
-    const welcomeModal = document.getElementById('welcomeModal');
-    const nextBtn = document.getElementById('nextBtn');
-    window.onload = () => {
-      welcomeModal.showModal();
-    };
-
-    nextBtn.addEventListener('click', () => {
-      welcomeModal.close();
-    });
-  </script>
-
-
-
-      <!-- GIFs Section, Left Side -->
-      <div class="gif-wrapper">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Y53dH2MLbDbQg2UdyvleucJh-3XSkO9TQw&s" alt="Gif 1">
-        <img src="https://media1.giphy.com/media/U17E0WQBnTrDtuGNrn/200w.gif?cid=6c09b9521lwvo3xyoxaujfgd8vve5pnr4xu5sih2a4aqid49&ep=v1_gifs_search&rid=200w.gif&ct=g" alt="Gif 2">
-        <img src="https://pa1.aminoapps.com/6847/14394797f3c6bb10b6fd0d007e42de722bdf66d2_hq.gif" alt="Gif 3">
-      </div>
-
-      <div class="row">
+    <div class="row">
       <div class="pocket-wrapper">
         <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
         <div class="pocket">Invention Project</div>
@@ -343,7 +323,6 @@
       </div>
     </div>
 
-    
     <!-- BTS Playlist -->
     <div class="music-player">
       <h2>BTS Playlist</h2>
@@ -368,7 +347,6 @@
       <p id="quoteDisplay">Click the button below to see a BTS quote.</p>
       <button onclick="generateQuote()">Show Quote</button>
     </div>
-
   </div>
 
   <!-- Modal for Welcome -->
@@ -434,5 +412,4 @@
 
 </body>
 </html>
-
 
