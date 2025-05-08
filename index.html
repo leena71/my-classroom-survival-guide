@@ -260,6 +260,8 @@
     overflow: auto; /* Allows scrollbars if content overflows */
     min-width: 300px; /* Minimum width */
     min-height: 150px; /* Minimum height */
+    /* Added placeholder to give a hint of what to input */
+    placeholder: "Your feedback matters! Feel free to share your input :)"; 
   }
 
   /* Submit button styling */
@@ -296,10 +298,6 @@
     margin: 20px;
   }
 
-  textarea.html-comment-box {
-    margin-bottom: 10px;
-  }
-
   /* Optional: Style the Form Container */
   .form-container {
     display: flex;
@@ -311,8 +309,7 @@
 
 <div id="commentBox" class="form-container">
   <form method="post">
-    <textarea name="comments" cols="50" rows="10" class="html-comment-box">
-Your feedback matters! Feel free to share your input :)
+    <textarea name="comments" cols="50" rows="10" class="html-comment-box" placeholder="Your feedback matters! Feel free to share your input :)">
     </textarea><br>
     <input type="submit" value="Into the void" class="html-comment-box">
     <input type="reset" value="Back to square one." class="html-comment-box">
