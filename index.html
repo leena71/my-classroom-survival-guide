@@ -97,12 +97,13 @@
     }
 
     iframe {
-      display: none; /* Initially hide the iframe */
+      display: block; /* Allow iframe to display when song is clicked */
       width: 100%;
       max-width: 600px;
       height: 315px;
       border-radius: 12px;
       margin-top: 20px;
+      border: none;
     }
 
     .playlist {
@@ -188,7 +189,7 @@
         <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
       </ul>
 
-      <!-- Embedded iframe, initially hidden -->
+      <!-- Embedded iframe -->
       <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
     </div>
 
@@ -213,4 +214,30 @@
     // Step 1: Welcome message
     nextBtn.onclick = () => {
       modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
-      nextBtn.innerHTML = "Keep Going";
+      nextBtn.innerHTML = "Keep Going"; // Change button text
+      nextBtn.onclick = step2; // Set next function
+    };
+
+    // Step 2: "How exciting" message
+    function step2() {
+      modalText.innerHTML = "How exciting. Moving on!";
+      nextBtn.innerHTML = "Almost There..."; // Change button text
+      nextBtn.onclick = step3; // Set next function
+    }
+
+    // Step 3: Tutorial message
+    function step3() {
+      modalText.innerHTML = "Let’s dive into the resources below!";
+      nextBtn.innerHTML = "Let's Go"; // Change button text
+      nextBtn.onclick = () => welcomeModal.close(); // Close modal
+    }
+
+    // Play audio function to change iframe src based on clicked song
+    function playAudio(url) {
+      const iframe = document.getElementById('audioIframe');
+      iframe.src = url; // Change iframe src to the YouTube video
+    }
+  </script>
+
+</body>
+</html>
