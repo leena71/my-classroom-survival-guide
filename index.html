@@ -85,109 +85,84 @@
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
-    /* Modal Styles */
-    dialog {
-      background-color: #fbe9f1; /* Light pastel pink */
+    /* Character Styles */
+    .character-container {
+      width: 250px;
+      height: 250px;
+      margin: 30px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #b39ddb;
       border-radius: 15px;
-      padding: 30px;
-      width: 80%;
-      max-width: 500px;
+      background-color: #f3e5f5;
+      position: relative;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    button {
+    .character {
+      width: 120px;
+      height: 120px;
+      background-image: url('https://via.placeholder.com/150'); /* Placeholder, replace with your image */
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Drag and Drop Area */
+    .drop-zone {
+      width: 80%;
+      height: 100px;
+      border: 2px dashed #b39ddb;
+      background-color: #e1bee7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #4a148c;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .drop-zone:hover {
+      background-color: #7b1fa2;
+      color: white;
+    }
+
+    .drop-zone p {
+      margin: 0;
+    }
+
+    /* Quote Section */
+    .quote-section {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .quote-section button {
       background-color: #4a148c;
       color: white;
+      padding: 18px 40px;
       border: none;
-      padding: 12px 25px;
-      font-size: 18px;
+      font-size: 24px;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: 12px;
       transition: background-color 0.3s;
     }
 
-    button:hover {
+    .quote-section button:hover {
       background-color: #7b1fa2;
-    }
-
-    /* Quote Generator Styles */
-    .quote-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      height: 250px;
-      width: 300px;
-      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
-      border: 4px solid #b39ddb;
-      border-radius: 0 0 40px 40px;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-      padding: 10px;
     }
 
     .quote-display {
-      font-size: 18px;
+      font-size: 24px;
       font-weight: bold;
       color: #4a148c;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .quote-btn {
-      background-color: #4a148c;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: background-color 0.3s;
-    }
-
-    .quote-btn:hover {
-      background-color: #7b1fa2;
-    }
-
-    /* Game Styles */
-    .game-container {
-      background-color: #f8c7d8;
-      width: 300px;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      text-align: center;
-    }
-
-    .game-container p {
-      font-size: 18px;
-      font-weight: bold;
-      color: #4a148c;
-    }
-
-    .game-container input {
-      padding: 10px;
-      font-size: 18px;
-      width: 80%;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .game-container button {
-      background-color: #4a148c;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 18px;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: background-color 0.3s;
-    }
-
-    .game-container button:hover {
-      background-color: #7b1fa2;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -228,55 +203,78 @@
 
     <div class="row">
       <div class="pocket-wrapper">
-        <div class="quote-container">
-          <button class="quote-btn" onclick="newQuote()">Get a BTS Quote</button>
-          <p id="quoteDisplay" class="quote-display">"Love myself, love yourself, peace."</p>
+        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
+        <div class="pocket">Invention Project</div>
+      </div>
+      <!-- Character and Drop Zone -->
+      <div class="character-container">
+        <div class="drop-zone" id="dropZone">
+          <p>Drag and Drop PDFs!</p>
         </div>
+        <div id="character" class="character"></div>
       </div>
     </div>
-
-    <!-- Interactive Game -->
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="game-container">
-          <p>Guess the Color Game</p>
-          <p>What color is the sky? </p>
-          <input type="text" id="colorInput" placeholder="Enter color" />
-          <button onclick="checkAnswer()">Submit</button>
-          <p id="gameResult"></p>
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- Modal for Welcome -->
-  <dialog id="welcomeModal">
-    <p id="modalText">Welcome to an educator's guide!</p>
-    <button id="nextBtn">Start</button>
-  </dialog>
+  <!-- Quote Section -->
+  <div class="quote-section">
+    <button id="generateQuoteBtn">Generate Quote</button>
+    <div id="quoteDisplay" class="quote-display">Your motivational quote will appear here!</div>
+  </div>
 
   <script>
+    // Drag-and-drop functionality
+    const dropZone = document.getElementById('dropZone');
+    const character = document.getElementById('character');
+
+    // Prevent default behavior for dragover and drop events
+    dropZone.addEventListener('dragover', (event) => {
+      event.preventDefault();
+      dropZone.style.backgroundColor = '#7b1fa2'; // Change drop zone color on hover
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.style.backgroundColor = '#e1bee7'; // Reset color when drag leaves
+    });
+
+    dropZone.addEventListener('drop', (event) => {
+      event.preventDefault();
+      dropZone.style.backgroundColor = '#7b1fa2'; // Change color on drop
+
+      // Check if dropped item is a file
+      const files = event.dataTransfer.files;
+      if (files.length > 0) {
+        const file = files[0];
+
+        // Check if the file is a PDF
+        if (file.type === 'application/pdf') {
+          alert("You fed the character a PDF: " + file.name);
+          
+          // Add animation to the character as if it's being fed the PDF
+          character.style.transform = "scale(1.2)"; // Character grows
+          setTimeout(() => {
+            character.style.transform = "scale(1)"; // Character returns to normal size
+          }, 500);
+        } else {
+          alert("Please drag a PDF file!");
+        }
+      }
+    });
+
+    // Quote Generator
     const quotes = [
-      "Don’t be afraid, don’t worry yourself.",
-      "Effort makes you. You will regret someday if you don’t do your best now.",
-      "Go on your path, even if you live for a day.",
-      "Love myself, love yourself, peace.",
-      "You were born to be real, not perfect."
+      "The best way to predict the future is to create it. – Peter Drucker",
+      "Teaching is the one profession that creates all other professions.",
+      "An investment in knowledge pays the best interest. – Benjamin Franklin",
+      "Education is the most powerful weapon which you can use to change the world. – Nelson Mandela",
+      "What we learn with pleasure we never forget. – Alfred Mercier"
     ];
 
-    function newQuote() {
-      const i = Math.floor(Math.random() * quotes.length);
-      document.getElementById('quoteDisplay').innerText = quotes[i];
-    }
+    document.getElementById('generateQuoteBtn').addEventListener('click', () => {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
+    });
+  </script>
 
-    // Interactive Game Logic
-    function checkAnswer() {
-      const answer = document.getElementById('colorInput').value.toLowerCase();
-      const result = document.getElementById('gameResult');
-      
-      if (answer === 'blue') {
-        result.textContent = "Correct! The sky is blue.";
-        result.style.color = "green";
-      } else {
-        result.textContent = "Oops! Try again.";
+</body>
+</html>
