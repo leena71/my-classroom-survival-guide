@@ -111,7 +111,7 @@
 
     /* Modal Styles */
     dialog {
-      background-color: #fbe9f1; /* Light pastel pink */
+      background-color: #fbe9f1;
       border-radius: 15px;
       padding: 30px;
       width: 80%;
@@ -151,7 +151,7 @@
       width: 100%;
       height: 100%;
       border: none;
-      visibility: hidden; /* Hide iframe */
+      visibility: hidden;
     }
 
     .playlist {
@@ -176,25 +176,26 @@
       background-color: #f4a3d6;
     }
 
-    /* Cute Widget Styles */
-    .cute-widget {
+    /* Style for the GIF section */
+    .gif-wrapper {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
       align-items: center;
-      gap: 20px;
-      margin-top: 20px;
     }
-    .cute-widget img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+
+    .gif-wrapper img {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
     }
-    .cute-widget .widget-text {
-      font-size: 18px;
-      font-weight: bold;
-      color: #4a148c;
+
+    .gif-wrapper img:hover {
+      transform: scale(1.1);
     }
+
   </style>
 </head>
 <body>
@@ -217,9 +218,122 @@
       </div>
     </div>
 
-   
-::contentReference[oaicite:0]{index=0}
- 
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
+        <div class="pocket">Book List</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
+        <div class="pocket">Course Reflection</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
+        <div class="pocket">All Assignments / The End</div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
+        <div class="pocket">Invention Project</div>
+      </div>
 
+      <!-- New GIF Section -->
+      <div class="gif-wrapper">
+        <img src="https://media.giphy.com/media/3o7aD5kE93oR3CZhSg/giphy.gif" alt="Cute gif 1">
+        <img src="https://media.giphy.com/media/3o7btPCdD7qBXYkwk0/giphy.gif" alt="Cute gif 2">
+        <img src="https://media.giphy.com/media/l41lXo5vGf4Z9IZz6/giphy.gif" alt="Cute gif 3">
+      </div>
+    </div>
+
+    <!-- BTS Playlist -->
+    <div class="music-player">
+      <h2>BTS Playlist</h2>
+      <ul class="playlist">
+        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
+        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
+      </ul>
+      <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
+    </div>
+
+    <!-- BTS Quote Generator -->
+    <div class="quote-container">
+      <p id="quoteDisplay">Click the button below to see a BTS quote.</p>
+      <button onclick="generateQuote()">Show Quote</button>
+    </div>
+
+  </div>
+
+  <!-- Modal for Welcome -->
+  <dialog id="welcomeModal">
+    <p id="modalText">Welcome to an educator's guide!</p>
+    <button id="nextBtn">Start</button>
+  </dialog>
+
+  <script>
+    const quotes = [
+      "Don’t be afraid, don’t worry yourself.",
+      "Effort makes you. You will regret someday if you don’t do your best now.",
+      "Love myself, love yourself, peace.",
+      "You were born to be real, not perfect.",
+      "Where there is hope, there is always hardship."
+    ];
+
+    function generateQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
+    }
+
+    const welcomeModal = document.getElementById('welcomeModal');
+    const nextBtn = document.getElementById('nextBtn');
+    const modalText = document.getElementById('modalText');
+
+    // Show the modal on page load
+    window.onload = () => {
+      welcomeModal.showModal();
+    };
+
+    // Step 1: Welcome message
+    nextBtn.onclick = () => {
+      modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
+      nextBtn.innerHTML = "Keep Going"; // Change button text
+      nextBtn.onclick = step2; // Set next function
+    };
+
+    // Step 2: "How exciting" message
+    function step2() {
+      modalText.innerHTML = "How exciting. Moving on!";
+      nextBtn.innerHTML = "Almost There..."; // Change button text
+      nextBtn.onclick = step3; // Set next function
+    }
+
+    // Step 3: Tutorial message
+    function step3() {
+      modalText.innerHTML = "Here's how to navigate the website...";
+      nextBtn.innerHTML = "Let's Go!"; // Change button text
+      nextBtn.onclick = closeModal; // Close modal on final step
+    }
+
+    // Close the modal
+    function closeModal() {
+      welcomeModal.close();
+    }
+
+    function playAudio(url) {
+      document.getElementById('audioIframe').src = url;
+      document.getElementById('audioIframe').style.visibility = 'visible'; // Make iframe visible
+    }
+  </script>
+</body>
+</html>
 
