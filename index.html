@@ -331,27 +331,29 @@
       <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
     </div>
 
-  <!-- Draggable and Resizable Comment Box -->
+ <!-- Draggable and Resizable Comment Box -->
 <div id="commentBox">
   <header>Voice Your Thoughts</header>
+  
+  <!-- Embed Google Form (Iframe) -->
   <iframe
     src="https://docs.google.com/forms/d/e/1FAIpQLScKzUjx0QRqFgWirFLPBzwpzbldxFaLIMuSlaVr6RXBkljW-A/viewform?embedded=true"
-    width="100%" height="600px" frameborder="0" marginheight="0" marginwidth="0" scrolling="yes">
+    width="100%" height="300px" frameborder="0" marginheight="0" marginwidth="0" scrolling="yes">
     Loading…
   </iframe>
+
+  <!-- Textbox and Submit button within the comment box -->
   <textarea id="commentText" placeholder="Your feedback matters!"></textarea>
   <button onclick="submitComment()">Submit Comment</button>
+  
   <div class="resizer"></div>
 </div>
 
-
-
 <style>
-
   /* Draggable and Resizable Comment Box */
   #commentBox {
     width: 300px;
-    height: 200px;
+    height: 500px; /* Adjusted to fit both the iframe and text box */
     background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
     border: 2px solid #b39ddb;
     border-radius: 10px;
@@ -463,11 +465,7 @@
   }
 
   // Handle Comment Submission and Popups
-  const form = document.getElementById('commentForm');
-  
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
+  function submitComment() {
     const commentText = document.getElementById('commentText').value;
 
     // Simple confirmation using alert
@@ -480,8 +478,9 @@
       alert('Thanks for leaving a comment :D!');
       document.getElementById('commentText').value = ''; // Clear the text box after submission
     }, 1000);
-  });
+  }
 </script>
+
 
 
 
