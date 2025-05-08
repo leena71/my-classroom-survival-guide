@@ -333,11 +333,14 @@
 
     <!-- Draggable and Resizable Comment Box -->
 <div id="commentBox">
-  <header>Leave Your Comment</header>
-  <textarea id="commentText" placeholder="Your feedback matters!"></textarea>
-  <button onclick="submitComment()">Submit Comment</button>
+  <header>Voice Your Thoughts</header>
+  <form id="commentForm" action="https://formspree.io/f/movdwzza" method="POST">
+    <textarea name="comment" id="commentText" placeholder="Your feedback matters! Feel free to share your input :)"></textarea>
+    <button type="submit">Submit Comment</button>
+  </form>
   <div class="resizer"></div>
 </div>
+
 
 <style>
   /* Draggable and Resizable Comment Box */
@@ -454,11 +457,25 @@
     }
   }
 
-  // Handle Comment Submission
-  function submitComment() {
-    const comment = document.getElementById('commentText').value;
-    console.log('Comment Submitted:', comment);  // Replace with your actual submission logic
-  }
+  // Handle Comment Submission and Popups
+  const form = document.getElementById('commentForm');
+  
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const commentText = document.getElementById('commentText').value;
+
+    // Simple confirmation using alert
+    alert('Into the void...');
+
+    // Simulating comment submission (you can replace this with an actual submission logic like an API call or email notification)
+    console.log('Comment Submitted:', commentText);
+
+    setTimeout(() => {
+      alert('Thanks for leaving a comment :D!');
+      document.getElementById('commentText').value = ''; // Clear the text box after submission
+    }, 1000);
+  });
 </script>
 
 
