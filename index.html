@@ -273,7 +273,7 @@
       <button onclick="generateQuote()">Show Quote</button>
     </div>
 
-    <!-- GIFs Section -->
+   <!-- GIFs Section -->
 <div class="gif-row">
   <div class="gif-wrapper">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Y53dH2MLbDbQg2UdyvleucJh-3XSkO9TQw&s" alt="Gif 1">
@@ -281,19 +281,64 @@
     <img src="https://pa1.aminoapps.com/6847/14394797f3c6bb10b6fd0d007e42de722bdf66d2_hq.gif" alt="Gif 3">
   </div>
 
-  <div class="row">
-    <div class="pocket-wrapper">
-      <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
-      <div class="pocket">Invention Project</div>
+  <div class="pocket-wrapper">
+    <div class="paper-tab">
+      <a href="files/Invention Project.pdf" target="_blank">Invention Project</a>
     </div>
-    
-    <div class="gif-wrapper">
-      <img src="https://i.pinimg.com/originals/ba/79/4c/ba794c3de23a9d038298c14382f65fd6.gif" alt="Cute gif 1">
-      <img src="https://media3.giphy.com/media/Ovi2PUCAFTJTZoHKyd/source.gif" alt="Cute gif 2">
-      <img src="https://64.media.tumblr.com/4d41794d1069fbd81b7e456b0e6d834a/1258a09550b47de0-9f/s400x600/398ec4fc18703f29e71816c881eb34a6c9641dd4.gif" alt="Cute gif 3">
-    </div>
+    <div class="pocket">Invention Project</div>
+  </div>
+
+  <div class="gif-wrapper">
+    <img src="https://i.pinimg.com/originals/ba/79/4c/ba794c3de23a9d038298c14382f65fd6.gif" alt="Cute gif 1">
+    <img src="https://media3.giphy.com/media/Ovi2PUCAFTJTZoHKyd/source.gif" alt="Cute gif 2">
+    <img src="https://64.media.tumblr.com/4d41794d1069fbd81b7e456b0e6d834a/1258a09550b47de0-9f/s400x600/398ec4fc18703f29e71816c881eb34a6c9641dd4.gif" alt="Cute gif 3">
   </div>
 </div>
+
+<!-- CSS -->
+<style>
+  .gif-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .gif-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 45%;
+  }
+
+  .gif-wrapper img {
+    max-width: 100%;
+    height: auto;
+    margin: 5px;
+  }
+
+  .pocket-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+  }
+
+  .paper-tab a {
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .pocket {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+</style>
+
 
 
   <script>
