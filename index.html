@@ -85,14 +85,62 @@
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
+    /* Character Styles */
+    .character-container {
+      width: 250px;
+      height: 250px;
+      margin: 30px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #b39ddb;
+      border-radius: 15px;
+      background-color: #f3e5f5;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .character {
+      width: 120px;
+      height: 120px;
+      background-image: url('https://via.placeholder.com/150'); /* Placeholder, replace with your image */
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Drag and Drop Area */
+    .drop-zone {
+      width: 80%;
+      height: 100px;
+      border: 2px dashed #b39ddb;
+      background-color: #e1bee7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #4a148c;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .drop-zone:hover {
+      background-color: #7b1fa2;
+      color: white;
+    }
+
+    .drop-zone p {
+      margin: 0;
+    }
+
     /* Quote Section */
     .quote-section {
       text-align: center;
       margin-top: 40px;
-      padding: 20px;
-      background-color: #f3e5f5;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .quote-section button {
@@ -124,28 +172,100 @@
   <h1>A Classroom Survival Guide: An Educator's Archive</h1>
 
   <div class="container">
-    <!-- Quote Section -->
-    <div class="quote-section">
-      <button id="generateQuoteBtn">Words to Remember</button>
-      <div id="quoteDisplay" class="quote-display">Your motivational quote will appear here!</div>
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
+        <div class="pocket">Teaching Textbook</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
+        <div class="pocket">Unit Lesson Plan</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
+        <div class="pocket">Teaching Philosophy</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
+        <div class="pocket">Book List</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
+        <div class="pocket">Course Reflection</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
+        <div class="pocket">All Assignments / The End</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/Invention Project.pdf" target="_blank">Invention Project</a></div>
+        <div class="pocket">Invention Project</div>
+      </div>
+      <!-- Character and Drop Zone -->
+      <div class="character-container">
+        <div class="drop-zone" id="dropZone">
+          <p>Drag and Drop PDFs!</p>
+        </div>
+        <div id="character" class="character"></div>
+      </div>
     </div>
   </div>
 
+  <!-- Quote Section -->
+  <div class="quote-section">
+    <button id="generateQuoteBtn">Generate Quote</button>
+    <div id="quoteDisplay" class="quote-display">Your motivational quote will appear here!</div>
+  </div>
+
   <script>
-    // Quote Generator functionality
+    // Drag-and-drop functionality
+    const dropZone = document.getElementById('dropZone');
+    const character = document.getElementById('character');
+
+    // Prevent default behavior for dragover and drop events
+    dropZone.addEventListener('dragover', (event) => {
+      event.preventDefault();
+      dropZone.style.backgroundColor = '#7b1fa2'; // Change drop zone color on hover
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.style.backgroundColor = '#e1bee7'; // Reset color when drag leaves
+    });
+
+    dropZone.addEventListener('drop', (event) => {
+      event.preventDefault();
+      dropZone.style.backgroundColor = '#7b1fa2'; // Change color on drop
+
+      // Check if dropped item is a file
+      const files = event.dataTransfer.files;
+      if (files.length > 0) {
+        const file = files[0];
+
+        // Check if the file is a PDF
+        if (file.type === 'application/pdf') {
+          alert("You fed the character a PDF: " + file.name);
+          
+          // Add animation to the character as if it's being fed the PDF
+          character.style.transform = "scale(1.2)"; // Character grows
+          setTimeout(() => {
+            character.style.transform = "scale(1)"; // Character returns to normal size
+          }, 500);
+        } else {
+          alert("Please drag a PDF file!");
+        }
+      }
+    });
+
+    // Quote Generator
     const quotes = [
       "The best way to predict the future is to create it. – Peter Drucker",
       "Teaching is the one profession that creates all other professions.",
       "An investment in knowledge pays the best interest. – Benjamin Franklin",
       "Education is the most powerful weapon which you can use to change the world. – Nelson Mandela",
-      "What we learn with pleasure we never forget. – Alfred Mercier"
-    ];
-
-    document.getElementById('generateQuoteBtn').addEventListener('click', () => {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
-    });
-  </script>
-
-</body>
-</html>
+      "What we learn with pleasure we never forget.
