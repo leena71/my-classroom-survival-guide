@@ -90,11 +90,13 @@
       text-align: center;
       margin-top: 20px;
     }
+
     .quote-container p {
       font-size: 24px;
       font-weight: bold;
       color: #4a148c;
     }
+
     .quote-container button {
       padding: 12px 25px;
       font-size: 18px;
@@ -105,6 +107,7 @@
       cursor: pointer;
       transition: background-color 0.3s;
     }
+
     .quote-container button:hover {
       background-color: #7b1fa2;
     }
@@ -195,7 +198,6 @@
     .gif-wrapper img:hover {
       transform: scale(1.1);
     }
-
   </style>
 </head>
 <body>
@@ -272,10 +274,10 @@
       <p id="quoteDisplay">Click the button below to see a BTS quote.</p>
       <button onclick="generateQuote()">Show Quote</button>
     </div>
-
   </div>
 
   <!-- Modal for Welcome -->
+
   <dialog id="welcomeModal">
     <p id="modalText">Welcome to an educator's guide!</p>
     <button id="nextBtn">Start</button>
@@ -335,5 +337,6 @@
       document.getElementById('audioIframe').style.visibility = 'visible'; // Make iframe visible
     }
   </script>
+
 </body>
 </html>
