@@ -6,7 +6,6 @@
   <title>Classroom Survival Guide</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Arapey&display=swap" rel="stylesheet">
   <style>
-    /* Global body styles */
     body {
       background-color: #e3f2fd;
       margin: 0;
@@ -86,123 +85,101 @@
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
 
-    /* Comment box styles */
+    /* Comment Box Styles */
     #commentBox {
-      position: absolute;
-      top: 85%;
-      left: 50%;
-      transform: translateX(-50%);
       width: 300px;
-      background-color: #f1f1f1;
-      border: 1px solid #d3d3d3;
-      box-shadow: 5px 5px 3px 0px rgba(97,97,97,0.5);
-      resize: both;
-      overflow: auto;
+      height: 200px;
+      background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+      border: 2px solid #b39ddb;
+      border-radius: 10px;
+      padding: 15px;
+      font-family: 'Arapey', serif;
+      color: #4a148c;
+      font-size: 14px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      cursor: move;
+      z-index: 1000;
     }
 
-    .drag-header {
-      background-color: #2196F3;
+    #commentBox header {
+      background-color: #4a148c;
       color: white;
       padding: 10px;
-      cursor: move;
+      border-radius: 8px;
+      font-weight: bold;
       text-align: center;
+      cursor: move;
     }
 
-    textarea.html-comment-box {
+    #commentBox textarea {
       width: 100%;
+      height: 120px;
       background-color: #FFFFCC;
+      border: 2px dotted #FFFFCC;
       font-family: Times, serif;
       font-size: 12pt;
       color: #000000;
       padding: 10px;
       box-sizing: border-box;
-      resize: none;
+      resize: vertical;
     }
 
-    input.html-comment-box {
-      background-color: #330033;
-      font-family: Times, serif;
-      font-size: 12pt;
-      color: #FFFFFF;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: background-color 0.3s ease;
-    }
-
-    input.html-comment-box:hover {
-      background-color: #4a148c;
-    }
-
-    input[type="reset"].html-comment-box {
-      background-color: #555;
-      margin-top: 10px;
-    }
-
-    input[type="reset"].html-comment-box:hover {
-      background-color: #777;
-    }
-
-    /* Quote generator container */
-    .quote-container {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .quote-container p {
-      font-size: 24px;
-      font-weight: bold;
-      color: #4a148c;
-    }
-
-    .quote-container button {
-      padding: 12px 25px;
-      font-size: 18px;
+    #commentBox button {
       background-color: #4a148c;
       color: white;
       border: none;
-      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 16px;
       cursor: pointer;
+      border-radius: 8px;
+      margin-top: 10px;
+      width: 100%;
       transition: background-color 0.3s;
     }
 
-    .quote-container button:hover {
+    #commentBox button:hover {
       background-color: #7b1fa2;
     }
 
-    /* Music player container */
-    .music-player {
+    /* Resizable Handle */
+    #commentBox .resizer {
+      width: 10px;
+      height: 10px;
+      background-color: #4a148c;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      cursor: se-resize;
+    }
+
+    /* Modal Styles */
+    dialog {
+      background-color: #fbe9f1;
+      border-radius: 15px;
+      padding: 30px;
+      width: 80%;
+      max-width: 500px;
       text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: none;
     }
 
-    .playlist {
-      list-style: none;
-      padding: 0;
+    button {
+      background-color: #4a148c;
+      color: white;
+      border: none;
+      padding: 12px 25px;
       font-size: 18px;
-      color: #4a148c;
-    }
-
-    .playlist li {
       cursor: pointer;
-      margin: 10px 0;
-      padding: 8px;
-      background-color: #f1f1f1;
-      border-radius: 6px;
+      border-radius: 8px;
       transition: background-color 0.3s;
     }
 
-    .playlist li:hover {
-      background-color: #d1c4e9;
-    }
-
-    iframe {
-      margin-top: 20px;
-      width: 100%;
-      height: 300px;
-      border: none;
-      visibility: hidden;
+    button:hover {
+      background-color: #7b1fa2;
     }
 
   </style>
@@ -212,51 +189,59 @@
   <h1>A Classroom Survival Guide: An Educator's Archive</h1>
 
   <div class="container">
-    <!-- BTS Playlist -->
-    <div class="music-player">
-      <h2>BTS Playlist</h2>
-      <ul class="playlist">
-        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
-      </ul>
-      <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
+        <div class="pocket">Teaching Textbook</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
+        <div class="pocket">Unit Lesson Plan</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
+        <div class="pocket">Teaching Philosophy</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
+        <div class="pocket">Book List</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
+        <div class="pocket">Course Reflection</div>
+      </div>
+      <div class="pocket-wrapper">
+        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
+        <div class="pocket">All Assignments / The End</div>
+      </div>
     </div>
 
-    <!-- Comment Box -->
+    <!-- Draggable Comment Box -->
     <div id="commentBox">
-      <div id="dragHeader" class="drag-header">Click here to move</div>
-      <form method="post">
-        <textarea name="comments" cols="50" rows="10" class="html-comment-box" placeholder="Your feedback matters! Feel free to share your input :)"></textarea><br>
-        <input type="submit" value="Into the void" class="html-comment-box">
-        <input type="reset" value="Back to square one." class="html-comment-box">
-      </form>
+      <header>Leave Your Comment</header>
+      <textarea id="commentText" placeholder="Your feedback matters! Feel free to share your input :)"></textarea>
+      <button onclick="submitComment()">Submit Comment</button>
+      <div class="resizer"></div>
     </div>
 
-    <!-- BTS Quote Generator -->
-    <div class="quote-container">
-      <p id="quoteDisplay">Click the button below to see a BTS quote.</p>
-      <button onclick="generateQuote()">Show Quote</button>
-    </div>
+    <!-- Modal for Welcome -->
+    <dialog id="welcomeModal">
+      <p id="modalText">Welcome to an educator's guide!</p>
+      <button id="nextBtn">Start</button>
+    </dialog>
+
   </div>
 
   <script>
-    // Draggable functionality for comment box
-    let dragHeader = document.getElementById("dragHeader");
-    let commentBox = document.getElementById("commentBox");
-
+    // Draggable Comment Box
+    const commentBox = document.getElementById('commentBox');
     let isDragging = false;
-    let offsetX, offsetY;
+    let offsetX = 0;
+    let offsetY = 0;
 
-    dragHeader.addEventListener('mousedown', (e) => {
+    commentBox.querySelector('header').addEventListener('mousedown', (e) => {
       isDragging = true;
       offsetX = e.clientX - commentBox.offsetLeft;
       offsetY = e.clientY - commentBox.offsetTop;
@@ -273,27 +258,45 @@
       isDragging = false;
     });
 
-    // Quote Generator
-    const quotes = [
-      "Don’t be afraid, don’t worry yourself.",
-      "Effort makes you. You will regret someday if you don’t do your best now.",
-      "Love myself, love yourself, peace.",
-      "You were born to be real, not perfect.",
-      "Where there is hope, there is always hardship."
-    ];
+    // Resizable Comment Box
+    const resizer = commentBox.querySelector('.resizer');
+    let isResizing = false;
 
-    function generateQuote() {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
+    resizer.addEventListener('mousedown', (e) => {
+      isResizing = true;
+      document.addEventListener('mousemove', resize);
+      document.addEventListener('mouseup', () => {
+        isResizing = false;
+        document.removeEventListener('mousemove', resize);
+      });
+    });
+
+    function resize(e) {
+      if (isResizing) {
+        const width = e.clientX - commentBox.offsetLeft;
+        const height = e.clientY - commentBox.offsetTop;
+        commentBox.style.width = `${width}px`;
+        commentBox.style.height = `${height}px`;
+      }
     }
 
-    // Play Audio for BTS playlist
-    function playAudio(url) {
-      document.getElementById('audioIframe').src = url;
-      document.getElementById('audioIframe').style.visibility = 'visible';
+    // Handle Comment Submission (e.g., log or process)
+    function submitComment() {
+      const comment = document.getElementById('commentText').value;
+      console.log('Comment Submitted:', comment);  // Replace with your actual submission logic
     }
+
+    // Modal logic
+    const welcomeModal = document.getElementById('welcomeModal');
+    const nextBtn = document.getElementById('nextBtn');
+    window.onload = () => {
+      welcomeModal.showModal();
+    };
+
+    nextBtn.addEventListener('click', () => {
+      welcomeModal.close();
+    });
   </script>
 
 </body>
 </html>
-
