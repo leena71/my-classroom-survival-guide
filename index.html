@@ -87,20 +87,21 @@
 
     /* Quote Generator Styles */
     .quote-container {
-      position: absolute;
-      top: 500px; /* Adjust top position to move it closer to the "Invention Project" section */
-      left: 20px; /* Adjust left position to align it with the left side of the page */
+      position: relative;
       background-color: #fbe9f1; /* Light pastel pink */
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-top: 60px; /* Added margin to ensure it doesn't overlap other elements */
+      width: 300px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
     }
 
     .quote-container p {
       font-size: 18px; /* Smaller font */
       font-weight: bold;
       color: #4a148c;
-      text-align: center;
       margin-bottom: 15px;
     }
 
@@ -220,6 +221,12 @@
       </ul>
       <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
     </div>
+
+    <!-- Quote Generator -->
+    <div class="quote-container">
+      <p id="quote">"The only way to do great work is to love what you do."</p>
+      <button onclick="generateQuote()">Generate New Quote</button>
+    </div>
   </div>
 
   <!-- Modal for Welcome -->
@@ -262,6 +269,18 @@
     // Close the modal
     function closeModal() {
       welcomeModal.close();
+    }
+
+    // Quote Generator Function
+    function generateQuote() {
+      const quotes = [
+        "The only way to do great work is to love what you do.",
+        "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+        "Believe you can and you're halfway there.",
+        "Don't watch the clock; do what it does. Keep going."
+      ];
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById("quote").innerHTML = `"${randomQuote}"`;
     }
 
     function playAudio(url) {
