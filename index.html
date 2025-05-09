@@ -460,34 +460,42 @@
 
   // Handle Comment Submission
   function submitComment() {
-    const comment = document.getElementById('commentText').value;
-    if (comment.trim() === '') {
-      alert('Please enter a comment before submitting.');
-      return;
-    }
-
-    const formUrl = 'https://docs.google.com/forms/d/e/1dRo3BZSIQRgk55PDwc1FexcNKb8fRr6dCk9A3WIEzhM/formResponse
-';
-    const entryId = 'entry.1793175060'; // Replace with your actual entry ID
-
-    // Create a FormData object
-    const formData = new FormData();
-    formData.append(entryId, comment);
-
-    // Send the data using fetch
-    fetch(formUrl, {
-      method: 'POST',
-      body: formData,
-      mode: 'no-cors' // Important for cross-origin requests
-    })
-    .then(() => {
-      alert('Thank you for your comment!');
-      document.getElementById('commentText').value = ''; // Clear the textarea
-    })
-    .catch(() => {
-      alert('There was an error submitting your comment. Please try again.');
-    });
+  const comment = document.getElementById('commentText').value;
+  if (comment.trim() === '') {
+    alert('Please enter a comment before submitting.');
+    return;
   }
+
+  const formUrl = 'https://docs.google.com/forms/d/e/1dRo3BZSIQRgk55PDwc1FexcNKb8fRr6dCk9A3WIEzhM/formResponse';
+  const entryId = 'entry.1793175060'; // Correct entry ID for the comment field
+
+  // Create a hidden form element
+  const form = document.createElement('form');
+  form.action = formUrl;
+  form.method = 'POST';
+  form.target = 'responseIframe';
+
+  // Create a hidden input field for the comment
+  const input = document.createElement('input');
+  input.type = 'hidden';
+  input.name = entryId;
+  input.value = comment;
+  form.appendChild(input);
+
+  // Append the form to the document body
+  document.body.appendChild(form);
+
+  // Submit the form
+  form.submit();
+
+  // Remove the form from the document
+  document.body.removeChild(form);
+
+  // Clear the textarea
+  document.getElementById('commentText').value = '';
+  alert('Thank you for your comment!');
+}
+
 </script>
 
 
