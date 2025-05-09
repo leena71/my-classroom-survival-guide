@@ -331,8 +331,7 @@
       </ul>
       <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
     </div>
-
-    <!-- Draggable and Resizable Comment Box -->
+<!-- Draggable and Resizable Comment Box -->
 <div id="commentBox">
   <header>Leave Your Comment</header>
   <textarea id="commentText" placeholder="Your feedback matters!"></textarea>
@@ -343,70 +342,70 @@
 <style>
   /* Draggable and Resizable Comment Box */
   #commentBox {
-  width: 300px;
-  height: 200px;
-  background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
-  border: 2px solid #b39ddb;
-  border-radius: 10px;
-  padding: 15px;
-  font-family: 'Arapey', serif;
-  color: #4a148c;
-  font-size: 14px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  margin-top: 30px; /* Adds space between the playlist and comment box */
-  z-index: 1000;
-}
+    width: 300px;
+    height: 200px;
+    background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+    border: 2px solid #b39ddb;
+    border-radius: 10px;
+    padding: 15px;
+    font-family: 'Arapey', serif;
+    color: #4a148c;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute; /* Ensures the box can be positioned absolutely */
+    margin-top: 30px; /* Adds space between the playlist and comment box */
+    z-index: 1000;
+  }
 
-#commentBox header {
-  background-color: #4a148c;
-  color: white;
-  padding: 10px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-align: center;
-  cursor: move;
-}
+  #commentBox header {
+    background-color: #4a148c;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    cursor: move; /* Makes the header draggable */
+  }
 
-#commentBox textarea {
-  width: 100%;
-  height: 120px;
-  background-color: #FFFFCC;
-  border: 2px dotted #FFFFCC;
-  font-family: Times, serif;
-  font-size: 12pt;
-  color: #000000;
-  padding: 10px;
-  box-sizing: border-box;
-  resize: vertical;
-}
+  #commentBox textarea {
+    width: 100%;
+    height: 120px;
+    background-color: #FFFFCC;
+    border: 2px dotted #FFFFCC;
+    font-family: Times, serif;
+    font-size: 12pt;
+    color: #000000;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
 
-#commentBox button {
-  background-color: #4a148c;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 8px;
-  margin-top: 10px;
-  width: 100%;
-  transition: background-color 0.3s;
-}
+  #commentBox button {
+    background-color: #4a148c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 100%;
+    transition: background-color 0.3s;
+  }
 
-#commentBox button:hover {
-  background-color: #7b1fa2;
-}
+  #commentBox button:hover {
+    background-color: #7b1fa2;
+  }
 
-#commentBox .resizer {
-  width: 10px;
-  height: 10px;
-  background-color: #4a148c;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  cursor: se-resize;
-}
+  #commentBox .resizer {
+    width: 10px;
+    height: 10px;
+    background-color: #4a148c;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize; /* Allows resizing from bottom-right corner */
+  }
 </style>
 
 <script>
@@ -461,6 +460,7 @@
     console.log('Comment Submitted:', comment);  // Replace with your actual submission logic
   }
 </script>
+
 
 
     <!-- BTS Quote Generator -->
