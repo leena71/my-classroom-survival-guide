@@ -210,358 +210,167 @@
   <h1>A Classroom Survival Guide: An Educator's Archive</h1>
 
   <div class="container">
-    <!-- Welcome Modal -->
-    <dialog id="welcomeModal">
-      <p id="modalText">Welcome to an educator's guide!</p>
-      <button id="nextBtn">Start</button>
-    </dialog>
+    <!-- Your existing content here -->
 
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingTextbook.pdf" target="_blank">Teaching Textbook</a></div>
-        <div class="pocket">Teaching Textbook</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/UnitLessonPlan.pdf" target="_blank">Unit Lesson Plan</a></div>
-        <div class="pocket">Unit Lesson Plan</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/TeachingPhilosophy.pdf" target="_blank">Teaching Philosophy</a></div>
-        <div class="pocket">Teaching Philosophy</div>
-      </div>
+    <!-- Draggable and Resizable Comment Box -->
+    <div id="commentBox">
+      <header>Leave Your Comment</header>
+      <textarea id="commentText" placeholder="Your feedback matters!"></textarea>
+      <button onclick="submitComment()">Submit Comment</button>
+      <div class="resizer"></div>
     </div>
 
-    <div class="row">
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/BookList.pdf" target="_blank">Book List</a></div>
-        <div class="pocket">Book List</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/CourseReflection.pdf" target="_blank">Course Reflection</a></div>
-        <div class="pocket">Course Reflection</div>
-      </div>
-      <div class="pocket-wrapper">
-        <div class="paper-tab"><a href="files/AllAssignmentsTheEnd.pdf" target="_blank">All Assignments / The End</a></div>
-        <div class="pocket">All Assignments / The End</div>
-      </div>
-    </div>
+    <style>
+      /* Draggable and Resizable Comment Box */
+      #commentBox {
+        width: 300px;
+        height: 200px;
+        background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
+        border: 2px solid #b39ddb;
+        border-radius: 10px;
+        padding: 15px;
+        font-family: 'Arapey', serif;
+        color: #4a148c;
+        font-size: 14px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        margin-top: 30px; /* Adds space between the playlist and comment box */
+        z-index: 1000;
+      }
 
-     <!-- GIFs Section -->
-<div class="gif-row">
-  <div class="gif-wrapper">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8Y53dH2MLbDbQg2UdyvleucJh-3XSkO9TQw&s" alt="Gif 1">
-    <img src="https://media1.giphy.com/media/U17E0WQBnTrDtuGNrn/200w.gif?cid=6c09b9521lwvo3xyoxaujfgd8vve5pnr4xu5sih2a4aqid49&ep=v1_gifs_search&rid=200w.gif&ct=g" alt="Gif 2">
-    <img src="https://pa1.aminoapps.com/6847/14394797f3c6bb10b6fd0d007e42de722bdf66d2_hq.gif" alt="Gif 3">
+      #commentBox header {
+        background-color: #4a148c;
+        color: white;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        text-align: center;
+        cursor: move;
+      }
+
+      #commentBox textarea {
+        width: 100%;
+        height: 120px;
+        background-color: #FFFFCC;
+        border: 2px dotted #FFFFCC;
+        font-family: Times, serif;
+        font-size: 12pt;
+        color: #000000;
+        padding: 10px;
+        box-sizing: border-box;
+        resize: vertical;
+      }
+
+      #commentBox button {
+        background-color: #4a148c;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 8px;
+        margin-top: 10px;
+        width: 100%;
+        transition: background-color 0.3s;
+      }
+
+      #commentBox button:hover {
+        background-color: #7b1fa2;
+      }
+
+      #commentBox .resizer {
+        width: 10px;
+        height: 10px;
+        background-color: #4a148c;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        cursor: se-resize;
+      }
+    </style>
+
+    <script>
+      // Draggable Comment Box
+      const commentBox = document.getElementById('commentBox');
+      let isDragging = false;
+      let offsetX, offsetY;
+
+      commentBox.querySelector('header').addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - commentBox.offsetLeft;
+        offsetY = e.clientY - commentBox.offsetTop;
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          commentBox.style.left = e.clientX - offsetX + 'px';
+          commentBox.style.top = e.clientY - offsetY + 'px';
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      // Resizable Comment Box
+      const resizer = commentBox.querySelector('.resizer');
+      let isResizing = false;
+
+      resizer.addEventListener('mousedown', (e) => {
+        isResizing = true;
+        document.addEventListener('mousemove', resize);
+        document.addEventListener('mouseup', () => {
+          isResizing = false;
+          document.removeEventListener('mousemove', resize);
+        });
+      });
+
+      function resize(e) {
+        const newWidth = e.clientX - commentBox.offsetLeft;
+        const newHeight = e.clientY - commentBox.offsetTop;
+        if (newWidth > 100 && newHeight > 100) {
+          commentBox.style.width = newWidth + 'px';
+          commentBox.style.height = newHeight + 'px';
+        }
+      }
+
+      // Handle Comment Submission
+      function submitComment() {
+        const commentText = document.getElementById('commentText').value.trim();
+
+        if (!commentText) {
+          alert("Please enter a comment before submitting!");
+          return;
+        }
+
+        const googleFormUrl = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID_HERE/formResponse';
+        const googleFormResponseField = 'YOUR_FIELD_ID_HERE'; // Change to your actual field ID
+
+        const formData = new FormData();
+        formData.append(googleFormResponseField, commentText);
+
+        fetch(googleFormUrl, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            alert("Comment submitted successfully!");
+            document.getElementById('commentText').value = ''; // Clear the textarea
+          } else {
+            alert("There was an error submitting your comment.");
+          }
+        })
+        .catch(error => {
+          alert("An unexpected error occurred.");
+        });
+      }
+    </script>
   </div>
-
-  <div class="pocket-wrapper">
-    <div class="paper-tab">
-      <a href="files/Invention Project.pdf" target="_blank">Invention Project</a>
-    </div>
-    <div class="pocket">Invention Project</div>
-  </div>
-
-  <div class="gif-wrapper">
-    <img src="https://i.pinimg.com/originals/ba/79/4c/ba794c3de23a9d038298c14382f65fd6.gif" alt="Cute gif 1">
-    <img src="https://media3.giphy.com/media/Ovi2PUCAFTJTZoHKyd/source.gif" alt="Cute gif 2">
-    <img src="https://64.media.tumblr.com/4d41794d1069fbd81b7e456b0e6d834a/1258a09550b47de0-9f/s400x600/398ec4fc18703f29e71816c881eb34a6c9641dd4.gif" alt="Cute gif 3">
-  </div>
-</div>
-
-<!-- CSS -->
-<style>
-  .gif-row {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .gif-wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 30%;
-  }
-
-  .gif-wrapper img {
-    max-width: 100%;
-    height: auto;
-    margin: 5px;
-  }
-
-  .pocket-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-  }
-
-  .paper-tab a {
-    text-decoration: none;
-    color: #000;
-    font-size: 14px;
-    padding: 5px;
-    margin-bottom: 10px;
-  }
-
-  .pocket {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-  }
-</style>
-
-    <!-- BTS Playlist -->
-    <div class="music-player">
-      <h2>BTS Playlist</h2>
-      <ul class="playlist">
-        <li onclick="playAudio('https://www.youtube.com/embed/gdZLi9oWNZg')">Dynamite</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/CuklIb9d3fI')">Permission to Dance</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kXpOEzNZ8hQ')">Yet To Come</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/9mwRYgMmSGE')">Love Myself</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/38k5zr1e0HI')">Magic Shop</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/xEeFrLSkMm8')">Spring Day</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/0lapF4DQPKQ')">Black Swan</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/384_y4CS9hI')">Save Me</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/LbvE0FV_70U')">Young Forever</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/kwyQ0MgmnDU')">For Youth</li>
-        <li onclick="playAudio('https://www.youtube.com/embed/sBWesVezIrc')">00:00</li>
-      </ul>
-      <iframe id="audioIframe" src="" allow="autoplay; encrypted-media" loading="lazy"></iframe>
-    </div>
-
-<!-- Draggable and Resizable Comment Box -->
-<div id="commentBox">
-  <header>Leave Your Comment</header>
-  <textarea id="commentText" placeholder="Your feedback matters!"></textarea>
-  <button onclick="submitComment()">Submit Comment</button>
-  <div class="resizer"></div>
-</div>
-
-    <!-- Hidden iframe for form submission -->
-<iframe id="responseIframe" name="responseIframe" style="display:none;"></iframe>
-
-
-<style>
-  /* Draggable and Resizable Comment Box */
-  #commentBox {
-    width: 300px;
-    height: 200px;
-    background: linear-gradient(to bottom right, #f8c7d8, #d1b3ff);
-    border: 2px solid #b39ddb;
-    border-radius: 10px;
-    padding: 15px;
-    font-family: 'Arapey', serif;
-    color: #4a148c;
-    font-size: 14px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    margin-top: 30px;
-    z-index: 1000;
-  }
-
-  #commentBox header {
-    background-color: #4a148c;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: bold;
-    text-align: center;
-    cursor: move;
-  }
-
-  #commentBox textarea {
-    width: 100%;
-    height: 120px;
-    background-color: #FFFFCC;
-    border: 2px dotted #FFFFCC;
-    font-family: Times, serif;
-    font-size: 12pt;
-    color: #000000;
-    padding: 10px;
-    box-sizing: border-box;
-    resize: vertical;
-  }
-
-  #commentBox button {
-    background-color: #4a148c;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-    margin-top: 10px;
-    width: 100%;
-    transition: background-color 0.3s;
-  }
-
-  #commentBox button:hover {
-    background-color: #7b1fa2;
-  }
-
-  #commentBox .resizer {
-    width: 10px;
-    height: 10px;
-    background-color: #4a148c;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    cursor: se-resize;
-  }
-</style>
-
-<script>
-  // Draggable Comment Box
-  const commentBox = document.getElementById('commentBox');
-  let isDragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
-
-  commentBox.querySelector('header').addEventListener('mousedown', (e) => {
-    isDragging = true;
-    offsetX = e.clientX - commentBox.offsetLeft;
-    offsetY = e.clientY - commentBox.offsetTop;
-  });
-
-  document.addEventListener('mousemove', (e) => {
-    if (isDragging) {
-      commentBox.style.left = `${e.clientX - offsetX}px`;
-      commentBox.style.top = `${e.clientY - offsetY}px`;
-    }
-  });
-
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
-
-  // Resizable Comment Box
-  const resizer = commentBox.querySelector('.resizer');
-  let isResizing = false;
-
-  resizer.addEventListener('mousedown', (e) => {
-    isResizing = true;
-    document.addEventListener('mousemove', resize);
-    document.addEventListener('mouseup', () => {
-      isResizing = false;
-      document.removeEventListener('mousemove', resize);
-    });
-  });
-
-  function resize(e) {
-    if (isResizing) {
-      const width = e.clientX - commentBox.offsetLeft;
-      const height = e.clientY - commentBox.offsetTop;
-      commentBox.style.width = `${width}px`;
-      commentBox.style.height = `${height}px`;
-    }
-  }
-
-  // Handle Comment Submission
-  function submitComment() {
-  const comment = document.getElementById('commentText').value;
-  if (comment.trim() === '') {
-    alert('Please enter a comment before submitting.');
-    return;
-  }
-
-  const formUrl = 'https://docs.google.com/forms/d/e/1dRo3BZSIQRgk55PDwc1FexcNKb8fRr6dCk9A3WIEzhM/formResponse';
-  const entryId = 'entry.1793175060'; // Correct entry ID for the comment field
-
-  // Create a hidden form element
-  const form = document.createElement('form');
-  form.action = formUrl;
-  form.method = 'POST';
-  form.target = 'responseIframe';
-
-  // Create a hidden input field for the comment
-  const input = document.createElement('input');
-  input.type = 'hidden';
-  input.name = entryId;
-  input.value = comment;
-  form.appendChild(input);
-
-  // Append the form to the document body
-  document.body.appendChild(form);
-
-  // Submit the form
-  form.submit();
-
-  // Remove the form from the document
-  document.body.removeChild(form);
-
-  // Clear the textarea
-  document.getElementById('commentText').value = '';
-  alert('Thank you for your comment!');
-}
-
-</script>
-
-
-
-    <!-- BTS Quote Generator -->
-    <div class="quote-container">
-      <p id="quoteDisplay">Click the button below to see a BTS quote.</p>
-      <button onclick="generateQuote()">Show Quote</button>
-    </div>
-
-  <script>
-    const quotes = [
-      "Don’t be afraid, don’t worry yourself.",
-      "Effort makes you. You will regret someday if you don’t do your best now.",
-      "Love myself, love yourself, peace.",
-      "You were born to be real, not perfect.",
-      "Where there is hope, there is always hardship."
-    ];
-
-    function generateQuote() {
-      const randomIndex = Math.floor(Math.random() * quotes.length);
-      document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
-    }
-
-    const welcomeModal = document.getElementById('welcomeModal');
-    const nextBtn = document.getElementById('nextBtn');
-    const modalText = document.getElementById('modalText');
-
-    // Show the modal on page load
-    window.onload = () => {
-      welcomeModal.showModal();
-    };
-
-    // Step 1: Welcome message
-    nextBtn.onclick = () => {
-      modalText.innerHTML = "Here, you'll be able to witness a multitude of assignments for Composition Theory & Pedagogy!";
-      nextBtn.innerHTML = "Keep Going"; // Change button text
-      nextBtn.onclick = step2; // Set next function
-    };
-
-    // Step 2: "How exciting" message
-    function step2() {
-      modalText.innerHTML = "How exciting. Moving on!";
-      nextBtn.innerHTML = "Almost There..."; // Change button text
-      nextBtn.onclick = step3; // Set next function
-    }
-
-    // Step 3: Tutorial message
-    function step3() {
-      modalText.innerHTML = "Here's how to navigate the website...";
-      nextBtn.innerHTML = "Let's Go!"; // Change button text
-      nextBtn.onclick = closeModal; // Close modal on final step
-    }
-
-    // Close the modal
-    function closeModal() {
-      welcomeModal.close();
-    }
-
-    function playAudio(url) {
-      document.getElementById('audioIframe').src = url;
-      document.getElementById('audioIframe').style.visibility = 'visible'; // Make iframe visible
-    }
-  </script>
-
-    
 </body>
 </html>
 
